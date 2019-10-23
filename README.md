@@ -8,7 +8,7 @@
 
 A Linux-based Docker image intended to use with CI/CD servers for building .NET Core applications.
 
-The is based on [buildpack-deps:stretch-scm](https://github.com/docker-library/buildpack-deps/blob/1845b3f918f69b4c97912b0d4d68a5658458e84f/stretch/scm/Dockerfile) (Debian 9) and contains:
+The image is based on [buildpack-deps:stretch-scm](https://github.com/docker-library/buildpack-deps/blob/1845b3f918f69b4c97912b0d4d68a5658458e84f/stretch/scm/Dockerfile) (Debian 9) and contains:
 
 * .NET Core Runtime 2.2
 * .NET Core SDK 3.0
