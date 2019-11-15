@@ -60,6 +60,13 @@ RUN mkdir -p ~/.nuget && \
     curl -H "Accept: application/octet-stream" -s -S -L \
     "https://github.com/Microsoft/artifacts-credprovider/releases/latest/download/Microsoft.NuGet.CredentialProvider.tar.gz" | tar xz -C ~/.nuget plugins/netcore
 
+# install kubectl
+ENV KUBECTL_VERSION="1.16.3"
+RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl" \
+    && chmod +x kubectl \
+    && mv kubectl /usr/bin/kubectl \
+    && kubectl 
+
 # install Nuke as global tool
 ENV NUKE_TOOL_VERSION="0.22.2"
 RUN dotnet tool install --global Nuke.GlobalTool --version ${NUKE_TOOL_VERSION}
