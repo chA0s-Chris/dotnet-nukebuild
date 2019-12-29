@@ -36,19 +36,19 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/docker.list
 
 # install .NET Core runtime 2.2
-ENV DOTNET_RUNTIME_VERSION="2.2.7"
+ENV DOTNET_RUNTIME_VERSION="2.2.8"
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/Runtime/$DOTNET_RUNTIME_VERSION/dotnet-runtime-$DOTNET_RUNTIME_VERSION-linux-x64.tar.gz \
-    && dotnet_sha512='5c76eee6dcf89569b40f5d7e87b2daa1ac9e924c6c22f37a7a2498bd96266b93aa95b70537218f9bac6e3992b24d991816afeb185ac6b29ecd3ea9b85201139c' \
+    && dotnet_sha512='b818557b0090ec047be0fb2e5ffee212e23e8417e1b0164f455e3a880bf5b94967dc4c86d6ed82397af9acc1f7415674904f6225a1abff85d28d2a6d5de8073b' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && mkdir -p /usr/share/dotnet \
     && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
     && rm dotnet.tar.gz \
     && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
-# install .NET Core SDK 3.0
-ENV DOTNET_SDK_VERSION="3.0.100"
+# install .NET Core SDK 3.1
+ENV DOTNET_SDK_VERSION="3.1.100"
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-linux-x64.tar.gz \
-    && dotnet_sha512='766da31f9a0bcfbf0f12c91ea68354eb509ac2111879d55b656f19299c6ea1c005d31460dac7c2a4ef82b3edfea30232c82ba301fb52c0ff268d3e3a1b73d8f7' \
+    && dotnet_sha512='5217ae1441089a71103694be8dd5bb3437680f00e263ad28317665d819a92338a27466e7d7a2b1f6b74367dd314128db345fa8fff6e90d0c966dea7a9a43bd21' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
     && rm dotnet.tar.gz
@@ -61,7 +61,7 @@ RUN mkdir -p ~/.nuget && \
     "https://github.com/Microsoft/artifacts-credprovider/releases/latest/download/Microsoft.NuGet.CredentialProvider.tar.gz" | tar xz -C ~/.nuget plugins/netcore
 
 # install kubectl
-ENV KUBECTL_VERSION="1.16.3"
+ENV KUBECTL_VERSION="1.17.0"
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl" \
     && chmod +x kubectl \
     && mv kubectl /usr/bin/kubectl \
