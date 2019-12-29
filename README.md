@@ -10,11 +10,12 @@ A Linux-based Docker image intended to use with CI/CD servers for building .NET 
 
 The image is based on [buildpack-deps:stretch-scm](https://github.com/docker-library/buildpack-deps/blob/1845b3f918f69b4c97912b0d4d68a5658458e84f/stretch/scm/Dockerfile) (Debian 9) and contains:
 
-* .NET Core Runtime 2.2
-* .NET Core SDK 3.0
-* Docker CLI
-* [nuke](https://nuke.build) as global tool
-* [GitVersion](https://gitversion.readthedocs.io) as global tool
+* .NET Core Runtime 2.2.8
+* .NET Core SDK 3.1.100
+* Docker CLI 19.03.05
+* kubectl 1.17.0
+* [nuke](https://nuke.build) 0.22.2  as global tool 
+* [GitVersion](https://gitversion.readthedocs.io) 5.0.1 as global tool
 * Azure Devops credential provider for NuGet
 
 
