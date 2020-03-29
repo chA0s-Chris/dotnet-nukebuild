@@ -36,9 +36,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/docker.list
 
 # install .NET Core runtime 2.1
-ENV DOTNET_RUNTIME_VERSION="2.1.16"
+ENV DOTNET_RUNTIME_VERSION="2.1.17"
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/Runtime/$DOTNET_RUNTIME_VERSION/dotnet-runtime-$DOTNET_RUNTIME_VERSION-linux-x64.tar.gz \
-    && dotnet_sha512='b49046a3f5ca102f36407ef0505d333c6c431862ab5ce76b25a516b91eae07dd96dd80ab1b6f82c44d65ee4203f029e2597ca2eac9ee27fcd2a5a118ead7bd0f' \
+    && dotnet_sha512='ee2a189436858ca30b5bc308102fd05ddb145a471d878007073d4a7fbdb9010452523de2a4f6780e61fcd58304d4b7fef5dbd8c46fec9a05da82bc3d3a443ad3' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && mkdir -p /usr/share/dotnet \
     && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
@@ -46,9 +46,9 @@ RUN curl -SL --output dotnet.tar.gz https://dotnetcli.blob.core.windows.net/dotn
     && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
 # install .NET Core SDK 3.1
-ENV DOTNET_SDK_VERSION="3.1.102"
+ENV DOTNET_SDK_VERSION="3.1.201"
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-linux-x64.tar.gz \
-    && dotnet_sha512='9cacdc9700468a915e6fa51a3e5539b3519dd35b13e7f9d6c4dd0077e298baac0e50ad1880181df6781ef1dc64a232e9f78ad8e4494022987d12812c4ca15f29' \
+    && dotnet_sha512='934bf29734776331691a4724f2174c4e9d2d1dde160f18397fd01abf0f96f2ec1bdd2874db9f0e25dce6993d527ea9c19031a0e67383fd813dcfcb9552ea0c70' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
     && rm dotnet.tar.gz
