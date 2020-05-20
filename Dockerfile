@@ -36,9 +36,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/docker.list
 
 # install .NET Core runtime 2.1
-ENV DOTNET_RUNTIME_VERSION="2.1.17"
-RUN curl -SL --output dotnet.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/Runtime/$DOTNET_RUNTIME_VERSION/dotnet-runtime-$DOTNET_RUNTIME_VERSION-linux-x64.tar.gz \
-    && dotnet_sha512='ee2a189436858ca30b5bc308102fd05ddb145a471d878007073d4a7fbdb9010452523de2a4f6780e61fcd58304d4b7fef5dbd8c46fec9a05da82bc3d3a443ad3' \
+ENV DOTNET_RUNTIME_VERSION="2.1.18"
+RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Runtime/$DOTNET_RUNTIME_VERSION/dotnet-runtime-$DOTNET_RUNTIME_VERSION-linux-x64.tar.gz \
+    && dotnet_sha512='97e8060b97ead693278af4897e33b7d13065ac19fc657c0d1aa184ffc73aab0354a07615e2f15f0bd8280c6212183bba5ffc61e30302539639d1a5b5b6466dbe' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && mkdir -p /usr/share/dotnet \
     && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
@@ -46,9 +46,9 @@ RUN curl -SL --output dotnet.tar.gz https://dotnetcli.blob.core.windows.net/dotn
     && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
 # install .NET Core SDK 3.1
-ENV DOTNET_SDK_VERSION="3.1.201"
-RUN curl -SL --output dotnet.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-linux-x64.tar.gz \
-    && dotnet_sha512='934bf29734776331691a4724f2174c4e9d2d1dde160f18397fd01abf0f96f2ec1bdd2874db9f0e25dce6993d527ea9c19031a0e67383fd813dcfcb9552ea0c70' \
+ENV DOTNET_SDK_VERSION="3.1.300"
+RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-linux-x64.tar.gz \
+    && dotnet_sha512='1c3844ea5f8847d92372dae67529ebb08f09999cac0aa10ace571c63a9bfb615adbf8b9d5cebb2f960b0a81f6a5fba7d80edb69b195b77c2c7cca174cbc2fd0b' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
     && rm dotnet.tar.gz
@@ -61,18 +61,18 @@ RUN mkdir -p ~/.nuget && \
     "https://github.com/Microsoft/artifacts-credprovider/releases/latest/download/Microsoft.NuGet.CredentialProvider.tar.gz" | tar xz -C ~/.nuget plugins/netcore
 
 # install kubectl
-ENV KUBECTL_VERSION="1.17.0"
+ENV KUBECTL_VERSION="1.18.2"
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl" \
     && chmod +x kubectl \
     && mv kubectl /usr/bin/kubectl \
     && kubectl 
 
 # install Nuke as global tool
-ENV NUKE_TOOL_VERSION="0.22.2"
+ENV NUKE_TOOL_VERSION="0.24.11"
 RUN dotnet tool install --global Nuke.GlobalTool --version ${NUKE_TOOL_VERSION}
 
 # install GitVersion as global tool
-ENV GITVERSION_TOOL_VERSION="5.0.1"
+ENV GITVERSION_TOOL_VERSION="5.3.3"
 RUN dotnet tool install --global GitVersion.Tool --version ${GITVERSION_TOOL_VERSION}
 
 
