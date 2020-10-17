@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim-amd64
+FROM buildpack-deps:stretch-scm
 
 ENV \
     # Unset ASPNETCORE_URLS from aspnet base image
@@ -9,17 +9,22 @@ ENV \
     DOTNET_USE_POLLING_FILE_WATCHER=true \
     # Skip extraction of XML docs - generally not useful within an image/container - helps performance
     NUGET_XMLDOC_MODE=skip \
-    # PowerShell telemetry for docker image usage
-    POWERSHELL_DISTRIBUTION_CHANNEL=PSDocker-DotnetSDK-Debian-10 \
+    POWERSHELL_TELEMETRY_OPTOUT=true \
+    DOTNET_CLI_TELEMETRY_OPTOUT=true \
     DOTNET_RUNNING_IN_CONTAINER=true \
     PATH="$PATH:/root/.dotnet/tools"
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        gnupg2 \
-        curl \
-        git \
-        wget \
+        libc6 \
+        libgcc1 \
+        libgssapi-krb5-2 \
+        libicu57 \
+        liblttng-ust0 \
+        libssl1.0.2 \
+        libstdc++6 \
+        zlib1g \
+        libcurl3 \
     && rm -rf /var/lib/apt/lists/*
 
 # install docker cli
@@ -49,6 +54,14 @@ RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$
     && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
     && rm dotnet.tar.gz
 
+# install ASP.NET Core 5
+ENV ASPNET_VERSION=5.0.0-rc.2.20475.17
+RUN curl -SL --output aspnetcore.tar.gz https://dotnetcli.azureedge.net/dotnet/aspnetcore/Runtime/${ASPNET_VERSION}/aspnetcore-runtime-${ASPNET_VERSION}-linux-x64.tar.gz \
+    && aspnetcore_sha512='d60f0bd6218d00bb86eb0882fe0c823dbfca464d2647c01d0c8f128e9ca430c4d4fae47b3f961ac93115b0343300e58f8c81dec2f6dbe9f36accc5ea28d2cc7b' \
+    && echo "$aspnetcore_sha512  aspnetcore.tar.gz" | sha512sum -c - \
+    && tar -zxf aspnetcore.tar.gz -C /usr/share/dotnet \
+    && rm aspnetcore.tar.gz
+
 # install .NET SDK 5
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/${DOTNET_SDK_VERSION}/dotnet-sdk-${DOTNET_SDK_VERSION}-linux-x64.tar.gz \
     && dotnet_sha512='e705043cdec53827695567eed021c76b100d77416f10cc18d4f5d02950f85bf9ccd7e2c22643f00a883e11b253fb8aa098e4dce008008a0796f913496f97e362' \
@@ -56,6 +69,7 @@ RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$
     && mkdir -p /usr/share/dotnet \
     && tar -C /usr/share/dotnet -oxzf dotnet.tar.gz ./packs ./sdk ./templates ./LICENSE.txt ./ThirdPartyNotices.txt \
     && rm dotnet.tar.gz \
+    && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet \
     # Trigger first run experience by running arbitrary cmd
     && dotnet help
 
