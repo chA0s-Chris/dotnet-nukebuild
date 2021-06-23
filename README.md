@@ -21,7 +21,13 @@ The image is based on the official .NET 5.0 SDK image (Debian 10) and contains:
 * PowerShell 7.1.3 (pwsh)
 * Azure Devops credential provider for NuGet
 
+## Get The Image
 
+```bash
+docker pull chaos/dotnet-nukebuild:latest
+```
+
+Or visit the [chaos/dotnet-nukebuild page](https://hub.docker.com/repository/docker/chaos/dotnet-nukebuild) on **docker hub**.
 
 ## License
 
