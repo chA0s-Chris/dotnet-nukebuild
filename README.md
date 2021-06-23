@@ -11,13 +11,13 @@ A Linux-based Docker image intended to use with CI/CD servers for building .NET 
 The image is based on the official .NET 5.0 SDK image (Debian 10) and contains:
 
 * .NET Core Runtime 2.1.28
-* .NET Core Runtime 3.1.15
-* .NET Core Runtime 5.0.6
-* .NET Core SDK 3.1.409
-* .NET SDK 5.0.300
-* Docker CLI 20.10.3
+* .NET Core Runtime 3.1.16
+* .NET Core Runtime 5.0.7
+* .NET Core SDK 3.1.410
+* .NET SDK 5.0.301
+* Docker CLI 20.10.7
 * kubectl 1.21.1
-* [nuke](https://nuke.build) 5.1.4  as global tool 
+* [nuke](https://nuke.build) 5.2.1  as global tool 
 * PowerShell 7.1.3 (pwsh)
 * Azure Devops credential provider for NuGet
 
