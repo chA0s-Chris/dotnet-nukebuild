@@ -1,6 +1,0 @@
-#!/bin/bash
-
-TAG="latest"
-
-docker tag ${IMAGE_NAME} ${DOCKER_REPO}:${TAG}
-docker push ${DOCKER_REPO}:${TAG}
