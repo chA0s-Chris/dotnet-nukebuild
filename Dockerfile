@@ -1,8 +1,9 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0.400
+FROM mcr.microsoft.com/dotnet/sdk:5.0.402
 
 ENV POWERSHELL_TELEMETRY_OPTOUT=true \
     DOTNET_CLI_TELEMETRY_OPTOUT=true \
     DOTNET_RUNNING_IN_CONTAINER=true \
+    NUKE_TELEMETRY_OPTOUT=true \
     PATH="$PATH:/root/.dotnet/tools"
 
 # install .NET Core runtime 2.1
@@ -15,9 +16,9 @@ RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Runti
     && rm dotnet.tar.gz
 
 # install .NET Core SDK 3.1
-ENV DOTNET_SDK_VERSION_3="3.1.412"
+ENV DOTNET_SDK_VERSION_3="3.1.414"
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/${DOTNET_SDK_VERSION_3}/dotnet-sdk-${DOTNET_SDK_VERSION_3}-linux-x64.tar.gz \
-    && dotnet_sha512='1ed0c1ab48723cef834906a55fb1889b29dd810cd2bc66cbd345a0baf8a2796045b5b7f4beef3c48bd56bef3ffed690b6fae4a5f017ad8687817b25a76fbd9be' \
+    && dotnet_sha512='f0a133a2bfbbdb6e3f35ad543bfd8e48f35e2a0e0bd719f712853d686e5f453b89569504813fde33baf8788dfe509bb3bc7ad69026588761f0a07362eac76104' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
     && rm dotnet.tar.gz
@@ -38,12 +39,12 @@ RUN mkdir -p ~/.nuget && \
     "https://github.com/Microsoft/artifacts-credprovider/releases/latest/download/Microsoft.NuGet.CredentialProvider.tar.gz" | tar xz -C ~/.nuget plugins/netcore
 
 # install kubectl
-ENV KUBECTL_VERSION="1.22.0"
+ENV KUBECTL_VERSION="1.22.2"
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl" \
     && chmod +x kubectl \
     && mv kubectl /usr/bin/kubectl \
     && kubectl 
 
 # install Nuke as global tool
-ENV NUKE_TOOL_VERSION="5.2.1"
+ENV NUKE_TOOL_VERSION="5.3.0"
 RUN dotnet tool install --global Nuke.GlobalTool --version ${NUKE_TOOL_VERSION}
