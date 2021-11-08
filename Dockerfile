@@ -11,7 +11,7 @@ ENV DOTNET_SDK_VERSION_5="5.0.403"
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/${DOTNET_SDK_VERSION_5}/dotnet-sdk-${DOTNET_SDK_VERSION_5}-linux-x64.tar.gz \
     && dotnet_sha512='7ba5f7f898dba64ea7027dc66184d60ac5ac35fabe750bd509711628442e098413878789fad5766be163fd2867cf22ef482a951e187cf629bbc6f54dd9293a4a' \
     && echo "$dotnet_sha512  dotnet.tar.gz" | sha512sum -c - \
-    && tar -C /usr/share/dotnet -oxzf dotnet.tar.gz ./packs ./sdk ./templates ./LICENSE.txt ./ThirdPartyNotices.txt \
+    && tar -C /usr/share/dotnet -oxzf dotnet.tar.gz ./host ./packs ./sdk ./templates ./shared \
     && rm dotnet.tar.gz
 
 # install .NET Core SDK 3.1
@@ -19,7 +19,7 @@ ENV DOTNET_SDK_VERSION_3="3.1.415"
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/${DOTNET_SDK_VERSION_3}/dotnet-sdk-${DOTNET_SDK_VERSION_3}-linux-x64.tar.gz \
     && dotnet_sha512='df7a6d1abed609c382799a8f69f129ec72ce68236b2faecf01aed4c957a40a9cfbbc9126381bf517dff3dbe0e488f1092188582701dd0fef09a68b8c5707c747' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
-    && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
+    && tar -C /usr/share/dotnet -oxzf dotnet.tar.gz ./host ./packs ./sdk ./templates ./shared \
     && rm dotnet.tar.gz
 
 # install docker cli and git-lfs

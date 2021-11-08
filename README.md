@@ -11,6 +11,7 @@ A Linux-based Docker image intended to use with CI/CD servers for building .NET 
 The image is based on the official .NET 6.0 SDK image (Debian 11) and contains:
 
 * .NET Core Runtime 3.1.20
+* .NET Runtime 5.0.12
 * .NET Runtime 6.0.0
 * .NET Core SDK 3.1.414
 * .NET SDK 5.0.403
