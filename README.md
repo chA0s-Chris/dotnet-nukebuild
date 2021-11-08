@@ -8,20 +8,20 @@
 
 A Linux-based Docker image intended to use with CI/CD servers for building .NET Core applications.
 
-The image is based on the official .NET 5.0 SDK image (Debian 10) and contains:
+The image is based on the official .NET 6.0 SDK image (Debian 11) and contains:
 
-* .NET Core Runtime 2.1.29
 * .NET Core Runtime 3.1.20
-* .NET Core Runtime 5.0.11
+* .NET Runtime 6.0.0
 * .NET Core SDK 3.1.414
-* .NET SDK 5.0.402
-* Docker CLI 20.10.9
-* kubectl 1.22.2
+* .NET SDK 5.0.403
+* .NET SDK 6.0.100
+* Docker CLI 20.10.10
+* kubectl 1.22.3
 * [nuke](https://nuke.build) 5.3.0  as global tool 
-* PowerShell 7.1.4 (pwsh)
+* PowerShell 7.2.0 (pwsh)
 * Azure Devops credential provider for NuGet
-* git 2.20.1
-* git-lfs 2.7.1
+* git 2.30.2
+* git-lfs 2.13.2
 
 ## Get The Image
 
@@ -30,6 +30,10 @@ docker pull chaos/dotnet-nukebuild:latest
 ```
 
 Or visit the [chaos/dotnet-nukebuild page](https://hub.docker.com/repository/docker/chaos/dotnet-nukebuild) on **docker hub**.
+
+## Versioning
+
+Since .NET 6 the major version of this image will always correspond to the highest .NET SDK version included.
 
 ## License
 
