@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0.102
+FROM mcr.microsoft.com/dotnet/sdk:6.0.200
 
 ENV POWERSHELL_TELEMETRY_OPTOUT=true \
     DOTNET_CLI_TELEMETRY_OPTOUT=true \
@@ -24,6 +24,7 @@ RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$
 
 # install docker cli and git-lfs
 RUN apt-get update \
+    && apt-get dist-upgrade -y \
     && apt-get install -y --no-install-recommends apt-transport-https gnupg \
     && curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
     && echo "deb [arch=amd64] https://download.docker.com/linux/debian bullseye stable" >/etc/apt/sources.list.d/docker.list \
@@ -37,8 +38,13 @@ RUN mkdir -p ~/.nuget && \
     curl -H "Accept: application/octet-stream" -s -S -L \
     "https://github.com/Microsoft/artifacts-credprovider/releases/latest/download/Microsoft.NuGet.CredentialProvider.tar.gz" | tar xz -C ~/.nuget plugins/netcore
 
+# install docker-pushrm
+RUN mkdir -p ~/.docker/cli-plugins \
+    && curl -L -o ~/.docker/cli-plugins/docker-pushrm "https://github.com/christian-korneck/docker-pushrm/releases/download/v1.8.0/docker-pushrm_linux_amd64" \
+    && chmod +x ~/.docker/cli-plugins/docker-pushrm
+
 # install kubectl
-ENV KUBECTL_VERSION="1.23.3"
+ENV KUBECTL_VERSION="1.23.4"
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl" \
     && chmod +x kubectl \
     && mv kubectl /usr/bin/kubectl \

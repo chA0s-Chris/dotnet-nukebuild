@@ -15,12 +15,13 @@ The image is based on the official .NET 6.0 SDK image (Debian 11) and contains:
 * .NET Runtime 6.0.2
 * .NET Core SDK 3.1.416
 * .NET SDK 5.0.405
-* .NET SDK 6.0.102
+* .NET SDK 6.0.200
 * Docker CLI 20.10.12
-* kubectl 1.23.3
+* kubectl 1.23.4
 * [nuke](https://nuke.build) 6.0.1  as global tool 
 * PowerShell 7.2.1 (pwsh)
 * Azure Devops credential provider for NuGet
+* docker pushrm 1.8.0 ([Docker Push Readme](https://github.com/christian-korneck/docker-pushrm))
 * git 2.30.2
 * git-lfs 2.13.2
 
