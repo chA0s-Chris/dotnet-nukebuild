@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0.201-focal
+FROM mcr.microsoft.com/dotnet/sdk:6.0.202-focal
 
 ENV POWERSHELL_TELEMETRY_OPTOUT=true \
     DOTNET_CLI_TELEMETRY_OPTOUT=true \
@@ -7,17 +7,17 @@ ENV POWERSHELL_TELEMETRY_OPTOUT=true \
     PATH="$PATH:/root/.dotnet/tools"
 
 # install .NET SDK 5.0
-ENV DOTNET_SDK_VERSION_5="5.0.406"
+ENV DOTNET_SDK_VERSION_5="5.0.407"
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/${DOTNET_SDK_VERSION_5}/dotnet-sdk-${DOTNET_SDK_VERSION_5}-linux-x64.tar.gz \
-    && dotnet_sha512='21f0617d359d5c333a8925af71b359c0e9e371eaa6e4b20faf0f699296cebaacc56cb9660fa310b2ed99ca636f241f2df999698a883cf7899dd670bdf92bdd29' \
+    && dotnet_sha512='b45f1bf086bfb5e0701c5e14534524ffc87d0195358ac4fa2cf36dac74537ca4c21c7177cfbfa7e121e77aa4106bb1e7039c9739ad73b942e2437bc5e39e6dce' \
     && echo "$dotnet_sha512  dotnet.tar.gz" | sha512sum -c - \
     && tar -C /usr/share/dotnet -oxzf dotnet.tar.gz ./host ./packs ./sdk ./templates ./shared \
     && rm dotnet.tar.gz
 
 # install .NET Core SDK 3.1
-ENV DOTNET_SDK_VERSION_3="3.1.417"
+ENV DOTNET_SDK_VERSION_3="3.1.418"
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/${DOTNET_SDK_VERSION_3}/dotnet-sdk-${DOTNET_SDK_VERSION_3}-linux-x64.tar.gz \
-    && dotnet_sha512='8eb1002ad829ddd17638b942d3f8da24ad71ccab268a92a1fa6af6a65d86a4ab7f885f663ea9c68127bb356462bce125222ec4f04dc928005cbbbb1a8658f107' \
+    && dotnet_sha512='e60f14841f1d0156de163f6f1e4c6358f14bd57e81beed13d294022da8a5182e41b8333591f92c4cac8eec138b7bc85725c19ae10e4e73a139a5231bb12b557f' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && tar -C /usr/share/dotnet -oxzf dotnet.tar.gz ./host ./packs ./sdk ./templates ./shared \
     && rm dotnet.tar.gz
@@ -52,12 +52,12 @@ RUN mkdir -p ~/.docker/cli-plugins \
     && chmod +x ~/.docker/cli-plugins/docker-pushrm
 
 # install kubectl
-ENV KUBECTL_VERSION="1.23.4"
+ENV KUBECTL_VERSION="1.23.5"
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl" \
     && chmod +x kubectl \
     && mv kubectl /usr/bin/kubectl \
     && kubectl 
 
 # install Nuke as global tool
-ENV NUKE_TOOL_VERSION="6.0.1"
+ENV NUKE_TOOL_VERSION="6.0.2"
 RUN dotnet tool install --global Nuke.GlobalTool --version ${NUKE_TOOL_VERSION}

@@ -10,19 +10,19 @@ A Linux-based Docker image intended to use with CI/CD servers for building .NET 
 
 The image is based on the official .NET 6.0 SDK image (Ubuntu Focal) and contains:
 
-* .NET Core Runtime 3.1.23
-* .NET Runtime 5.0.15
-* .NET Runtime 6.0.3
-* .NET Core SDK 3.1.417
-* .NET SDK 5.0.406
-* .NET SDK 6.0.201
-* Docker CLI 20.10.13
-* kubectl 1.23.4
-* [nuke](https://nuke.build) 6.0.1  as global tool 
-* PowerShell 7.2.1 (pwsh)
+* .NET Core Runtime 3.1.24
+* .NET Runtime 5.0.16
+* .NET Runtime 6.0.4
+* .NET Core SDK 3.1.418
+* .NET SDK 5.0.407
+* .NET SDK 6.0.202
+* Docker CLI 20.10.14
+* kubectl 1.23.5
+* [nuke](https://nuke.build) 6.0.2  as global tool 
+* PowerShell 7.2.2 (pwsh)
 * Azure Devops credential provider for NuGet
 * docker pushrm 1.8.0 ([Docker Push Readme](https://github.com/christian-korneck/docker-pushrm))
-* git 2.35.1
+* git 2.35.2
 * git-lfs 3.1.2
 
 ## Get The Image
