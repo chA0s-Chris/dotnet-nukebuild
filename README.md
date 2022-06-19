@@ -29,7 +29,7 @@ The image is based on the official .NET 6.0 SDK image (Ubuntu Jammy) and contain
 docker pull chaos/dotnet-nukebuild:latest
 ```
 
-Or visit the [chaos/dotnet-nukebuild page](https://hub.docker.com/repository/docker/chaos/dotnet-nukebuild) on **docker hub**.
+Or visit the [chaos/dotnet-nukebuild page](https://hub.docker.com/r/chaos/dotnet-nukebuild) on **docker hub**.
 
 ## Versioning
 
