@@ -10,17 +10,17 @@ A Linux-based Docker image intended to use with CI/CD servers for building .NET 
 
 The image is based on the official .NET 6.0 SDK image (Ubuntu Jammy) and contains:
 
-* .NET Core Runtime 3.1.27
-* .NET Runtime 6.0.7
-* .NET Core SDK 3.1.421
-* .NET SDK 6.0.302
+* .NET Core Runtime 3.1.28
+* .NET Runtime 6.0.8
+* .NET Core SDK 3.1.422
+* .NET SDK 6.0.400
 * Docker CLI 20.10.17
 * kubectl 1.24.3
 * [nuke](https://nuke.build) 6.1.2  as global tool 
 * PowerShell 7.2.5 (pwsh)
 * Azure Devops credential provider for NuGet
 * docker pushrm 1.9.0 ([Docker Push Readme](https://github.com/christian-korneck/docker-pushrm))
-* git 2.37.1
+* git 2.37.2
 * git-lfs 3.2.0
 
 ## Get The Image
