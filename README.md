@@ -1,5 +1,6 @@
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/chA0s-Chris/dotnet-nukebuild?label=version&style=plastic)
-![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/chaos/dotnet-nukebuild?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/chA0s-Chris/dotnet-nukebuild?style=plastic)
+![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/chaos/dotnet-nukebuild?style=plastic)
 ![Docker Pulls](https://img.shields.io/docker/pulls/chaos/dotnet-nukebuild?style=plastic)
 ![GitHub](https://img.shields.io/github/license/chA0s-Chris/dotnet-nukebuild?style=plastic)
 
@@ -8,19 +9,19 @@
 
 A Linux-based Docker image intended to use with CI/CD servers for building .NET Core applications.
 
-The image is based on the official .NET 6.0 SDK image (Ubuntu Jammy) and contains:
+The image is based on the official .NET 7.0 SDK image (Ubuntu Jammy) and contains:
 
-* .NET Core Runtime 3.1.28
-* .NET Runtime 6.0.8
-* .NET Core SDK 3.1.422
-* .NET SDK 6.0.400
-* Docker CLI 20.10.17
-* kubectl 1.24.3
-* [nuke](https://nuke.build) 6.1.2  as global tool 
-* PowerShell 7.2.5 (pwsh)
+* .NET Runtime 6.0.11
+* .NET Runtime 7.0.0
+* .NET SDK 6.0.403
+* .NET SDK 7.0.100
+* Docker CLI 20.10.21
+* kubectl 1.25.3
+* [nuke](https://nuke.build) 6.2.1  as global tool 
+* PowerShell 7.3.0-rc1 (pwsh)
 * Azure Devops credential provider for NuGet
 * docker pushrm 1.9.0 ([Docker Push Readme](https://github.com/christian-korneck/docker-pushrm))
-* git 2.37.2
+* git 2.38.1
 * git-lfs 3.2.0
 
 ## Get The Image
