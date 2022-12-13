@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:7.0.100-jammy
+FROM mcr.microsoft.com/dotnet/sdk:7.0.101-jammy
 
 ENV POWERSHELL_TELEMETRY_OPTOUT=true \
     DOTNET_CLI_TELEMETRY_OPTOUT=true \
@@ -7,9 +7,9 @@ ENV POWERSHELL_TELEMETRY_OPTOUT=true \
     PATH="$PATH:/root/.dotnet/tools"
 
 # install .NET SDK 6.0
-ENV DOTNET_SDK_VERSION_6="6.0.403"
+ENV DOTNET_SDK_VERSION_6="6.0.404"
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/${DOTNET_SDK_VERSION_6}/dotnet-sdk-${DOTNET_SDK_VERSION_6}-linux-x64.tar.gz \
-    && dotnet_sha512='779b3e24a889dbb517e5ff5359dab45dd3296160e4cb5592e6e41ea15cbf87279f08405febf07517aa02351f953b603e59648550a096eefcb0a20fdaf03fadde' \
+    && dotnet_sha512='7a0f4b308d3fe98df9b426b0f8f8fb7bd7247244af3570e867a3969349c62c7ea4c6da81a1a2280788e300784167a2933db523f461985aef0681e0cf14bf8f0d' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && tar -C /usr/share/dotnet -oxzf dotnet.tar.gz ./host ./packs ./sdk ./templates ./shared \
     && rm dotnet.tar.gz
@@ -25,8 +25,8 @@ RUN apt-get update \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E1DD270288B4E6030699E45FA1715D88E1DF1F24 \
     && apt-get update \
     && apt-get dist-upgrade -y \
-    && curl -SL --output git-lfs.deb https://packagecloud.io/github/git-lfs/packages/ubuntu/jammy/git-lfs_3.2.0_amd64.deb/download.deb \
-    && git_lfs_sha512='fa6ef55588c8bc54b84cabe7ef781eff4f3b6698c490a90e1c56d83372c9a6fd2bf629f87ffebeb1d62c8f191cb9528f99a1a4ae2d4096083f75420111d04611' \
+    && curl -SL --output git-lfs.deb https://packagecloud.io/github/git-lfs/packages/ubuntu/jammy/git-lfs_3.3.0_amd64.deb/download.deb \
+    && git_lfs_sha512='0646a84a82928827f8571a01858f4ba6353fde86ac2050d8336e0f63b5a6af946ce2518da66169c47a0a5b0b27aca26d7a1a08ad458cdd5aa5e0435a0a30772c' \
     && echo "$git_lfs_sha512 git-lfs.deb" | sha512sum -c - \
     && dpkg -i git-lfs.deb \
     && apt-get install -y docker-ce-cli \
@@ -45,7 +45,7 @@ RUN mkdir -p ~/.docker/cli-plugins \
     && chmod +x ~/.docker/cli-plugins/docker-pushrm
 
 # install kubectl
-ENV KUBECTL_VERSION="1.25.3"
+ENV KUBECTL_VERSION="1.26.0"
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl" \
     && chmod +x kubectl \
     && mv kubectl /usr/bin/kubectl \
