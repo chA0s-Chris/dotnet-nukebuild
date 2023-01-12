@@ -1,15 +1,16 @@
-FROM mcr.microsoft.com/dotnet/sdk:7.0.101-jammy
+FROM mcr.microsoft.com/dotnet/sdk:7.0.102-jammy
 
 ENV POWERSHELL_TELEMETRY_OPTOUT=true \
     DOTNET_CLI_TELEMETRY_OPTOUT=true \
+    DOTNET_CLI_UI_LANGUAGE=en-US \
     DOTNET_RUNNING_IN_CONTAINER=true \
     NUKE_TELEMETRY_OPTOUT=true \
     PATH="$PATH:/root/.dotnet/tools"
 
 # install .NET SDK 6.0
-ENV DOTNET_SDK_VERSION_6="6.0.404"
+ENV DOTNET_SDK_VERSION_6="6.0.405"
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/${DOTNET_SDK_VERSION_6}/dotnet-sdk-${DOTNET_SDK_VERSION_6}-linux-x64.tar.gz \
-    && dotnet_sha512='7a0f4b308d3fe98df9b426b0f8f8fb7bd7247244af3570e867a3969349c62c7ea4c6da81a1a2280788e300784167a2933db523f461985aef0681e0cf14bf8f0d' \
+    && dotnet_sha512='44e719c67dd06c73a8736ab63423d735850bc607adf4b8a9f4123945b13014f8144b4fb2c4cfe790d323106b7ce604388cc5d617bc153fd7820878b9187a2cd4' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && tar -C /usr/share/dotnet -oxzf dotnet.tar.gz ./host ./packs ./sdk ./templates ./shared \
     && rm dotnet.tar.gz
@@ -52,5 +53,5 @@ RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/v${KUBEC
     && kubectl 
 
 # install Nuke as global tool
-ENV NUKE_TOOL_VERSION="6.2.1"
+ENV NUKE_TOOL_VERSION="6.3.0"
 RUN dotnet tool install --global Nuke.GlobalTool --version ${NUKE_TOOL_VERSION}
