@@ -1,0 +1,20 @@
+version: "{build}"
+
+image: Ubuntu2004
+
+branches:
+  only:
+    - main
+
+environment:
+  CI_DOCKER_LOGIN: chaos
+  CI_DOCKER_TOKEN:
+    secure: l9ZZeorsM3mx7bzzLb8dB2jeae32eVSg4eX44Rq3GjOCcZNQewDj2pztnJ4i7bsy
+
+build_script:
+  - sh: sh build.sh
+
+on_finish:
+  - sh: docker logout
+
+test: off
