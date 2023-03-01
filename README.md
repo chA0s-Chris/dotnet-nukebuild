@@ -14,7 +14,7 @@ The image is based on the official .NET 7.0 SDK image (Ubuntu Jammy) and contain
 * .NET Runtime 6.0.14
 * .NET Runtime 7.0.3
 * .NET SDK 6.0.406
-* .NET SDK 7.0.103
+* .NET SDK 7.0.201
 * Docker CLI 23.0.1
 * kubectl 1.26.1
 * [nuke](https://nuke.build) 6.3.0  as global tool 
