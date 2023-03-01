@@ -14,6 +14,7 @@ chmod +x ${DOCKER_PUSHRM_CMD}
 
 docker build -t ${BUILD_IMAGE_NAME}:${IMAGE_RELEASE_VERSION} ./release
 docker tag ${BUILD_IMAGE_NAME}:${IMAGE_RELEASE_VERSION} ${BUILD_IMAGE_NAME}:latest
+docker tag ${BUILD_IMAGE_NAME}:${IMAGE_RELEASE_VERSION} ${BUILD_IMAGE_NAME}:${IMAGE_RELEASE_MAJOR}
 
 docker build -t ${BUILD_IMAGE_NAME}:${IMAGE_PRERELEASE_VERSION} ./pre
 docker tag ${BUILD_IMAGE_NAME}:${IMAGE_PRERELEASE_VERSION} ${BUILD_IMAGE_NAME}:preview
@@ -22,6 +23,7 @@ echo ${CI_DOCKER_TOKEN} | docker login -u ${CI_DOCKER_LOGIN} --password-stdin
 
 docker push ${BUILD_IMAGE_NAME}:${IMAGE_RELEASE_VERSION}
 docker push ${BUILD_IMAGE_NAME}:latest
+docker push ${BUILD_IMAGE_NAME}:${IMAGE_RELEASE_MAJOR}
 docker push ${BUILD_IMAGE_NAME}:${IMAGE_PRERELEASE_VERSION}
 docker push ${BUILD_IMAGE_NAME}:preview
 
