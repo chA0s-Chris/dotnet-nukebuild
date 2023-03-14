@@ -40,8 +40,8 @@ Since .NET 6 the major version of this image will always correspond to the highe
 
 The current preview version is available using the `preview` tag and also includes:
 
-* .NET Runtime 8.0.0-preview.1.23110.8
-* .NET SDK 8.0.100-preview.1.23115.2
+* .NET Runtime 8.0.0-preview.2.23128.3
+* .NET SDK 8.0.100-preview.2.23157.25
 
 ```bash
 docker pull chaos/dotnet-nukebuild:preview
