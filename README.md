@@ -11,10 +11,10 @@ A Linux-based Docker image intended to use with CI/CD servers for building .NET 
 
 The image is based on the official .NET 7.0 SDK image (Ubuntu Jammy) and contains:
 
-* .NET Runtime 6.0.15
-* .NET Runtime 7.0.4
-* .NET SDK 6.0.407
-* .NET SDK 7.0.202
+* .NET Runtime 6.0.16
+* .NET Runtime 7.0.5
+* .NET SDK 6.0.408
+* .NET SDK 7.0.203
 * Docker CLI 23.0.1
 * kubectl 1.26.3
 * [nuke](https://nuke.build) 6.3.0  as global tool 
@@ -40,8 +40,8 @@ Since .NET 6 the major version of this image will always correspond to the highe
 
 The current preview version is available using the `preview` tag and also includes:
 
-* .NET Runtime 8.0.0-preview.2.23128.3
-* .NET SDK 8.0.100-preview.2.23157.25
+* .NET Runtime 8.0.0-preview.3.23174.8
+* .NET SDK 8.0.100-preview.3.23178.7
 
 ```bash
 docker pull chaos/dotnet-nukebuild:preview
