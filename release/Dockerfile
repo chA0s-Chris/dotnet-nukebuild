@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:7.0.304-jammy
+FROM mcr.microsoft.com/dotnet/sdk:7.0.306-jammy
 
 ENV POWERSHELL_TELEMETRY_OPTOUT=true \
     DOTNET_CLI_TELEMETRY_OPTOUT=true \
@@ -8,9 +8,9 @@ ENV POWERSHELL_TELEMETRY_OPTOUT=true \
     PATH="$PATH:/root/.dotnet/tools"
 
 # install .NET SDK 6.0
-ENV DOTNET_SDK_VERSION_6="6.0.410"
+ENV DOTNET_SDK_VERSION_6="6.0.412"
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/${DOTNET_SDK_VERSION_6}/dotnet-sdk-${DOTNET_SDK_VERSION_6}-linux-x64.tar.gz \
-    && dotnet_sha512='8c85f5b10eb786c8cf31bf268131a2345a295d88d318310dc8457d831f0a587ec1600e43beb7f55aec2248483b9a95e905a468b592f0c910443b4aaa9baeb2e3' \
+    && dotnet_sha512='ee97aa5258e05aecadc66e844fa8eef97d51e5035492999b974cc8272e4db1a862a1f88a925f38be9e95c71d2e961b56459dcd614475895df608945c8057c311' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && tar -C /usr/share/dotnet -oxzf dotnet.tar.gz ./host ./packs ./sdk ./templates ./shared \
     && rm dotnet.tar.gz
@@ -46,7 +46,7 @@ RUN mkdir -p ~/.docker/cli-plugins \
     && chmod +x ~/.docker/cli-plugins/docker-pushrm
 
 # install kubectl
-ENV KUBECTL_VERSION="1.27.2"
+ENV KUBECTL_VERSION="1.27.3"
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl" \
     && chmod +x kubectl \
     && mv kubectl /usr/bin/kubectl \
