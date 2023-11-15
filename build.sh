@@ -19,6 +19,8 @@ docker tag ${BUILD_IMAGE_NAME}:${IMAGE_RELEASE_VERSION} ${BUILD_IMAGE_NAME}:${IM
 if [ -n "${IMAGE_PRERELEASE_VERSION}" ]; then
     docker build -t ${BUILD_IMAGE_NAME}:${IMAGE_PRERELEASE_VERSION} ./pre
     docker tag ${BUILD_IMAGE_NAME}:${IMAGE_PRERELEASE_VERSION} ${BUILD_IMAGE_NAME}:preview
+else
+    docker tag ${BUILD_IMAGE_NAME}:${IMAGE_RELEASE_VERSION} ${BUILD_IMAGE_NAME}:preview
 fi
 
 echo ${CI_DOCKER_TOKEN} | docker login -u ${CI_DOCKER_LOGIN} --password-stdin
@@ -29,7 +31,8 @@ docker push ${BUILD_IMAGE_NAME}:${IMAGE_RELEASE_MAJOR}
 
 if [ -n "${IMAGE_PRERELEASE_VERSION}" ]; then
     docker push ${BUILD_IMAGE_NAME}:${IMAGE_PRERELEASE_VERSION}
-    docker push ${BUILD_IMAGE_NAME}:preview
 fi
+
+docker push ${BUILD_IMAGE_NAME}:preview
 
 docker pushrm ${BUILD_IMAGE_NAME}

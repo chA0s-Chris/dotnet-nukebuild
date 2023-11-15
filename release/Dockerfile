@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:7.0.403-jammy
+FROM mcr.microsoft.com/dotnet/sdk:8.0.100-jammy
 
 ENV POWERSHELL_TELEMETRY_OPTOUT=true \
     DOTNET_CLI_TELEMETRY_OPTOUT=true \
@@ -6,6 +6,14 @@ ENV POWERSHELL_TELEMETRY_OPTOUT=true \
     DOTNET_RUNNING_IN_CONTAINER=true \
     NUKE_TELEMETRY_OPTOUT=true \
     PATH="$PATH:/root/.dotnet/tools"
+
+# install .NET SDK 7.0
+ENV DOTNET_SDK_VERSION_7="7.0.404"
+RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/${DOTNET_SDK_VERSION_7}/dotnet-sdk-${DOTNET_SDK_VERSION_7}-linux-x64.tar.gz \
+    && dotnet_sha512='f5c122044e9a107968af1a534051e28242f45307c3db760fbb4f3a003d92d8ea5a856ad4c4e8e4b88a3b6a825fe5e3c9e596c9d2cfa0eca8d5d9ee2c5dad0053' \
+    && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
+    && tar -C /usr/share/dotnet -oxzf dotnet.tar.gz ./host ./packs ./sdk ./templates ./shared \
+    && rm dotnet.tar.gz
 
 # install .NET SDK 6.0
 ENV DOTNET_SDK_VERSION_6="6.0.416"
