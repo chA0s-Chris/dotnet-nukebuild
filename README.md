@@ -11,20 +11,20 @@ A Linux-based Docker image intended to use with CI/CD servers for building .NET 
 
 The image is based on the official .NET 8.0 SDK image (Ubuntu Jammy) and contains:
 
-* .NET Runtime 6.0.24
-* .NET Runtime 7.0.14
-* .NET Runtime 8.0.0
-* .NET SDK 6.0.416
-* .NET SDK 7.0.404
-* .NET SDK 8.0.100
+* .NET Runtime 6.0.26
+* .NET Runtime 7.0.15
+* .NET Runtime 8.0.1
+* .NET SDK 6.0.418
+* .NET SDK 7.0.405
+* .NET SDK 8.0.101
 * Docker CLI 24.0.7
-* kubectl 1.28.3
+* kubectl 1.29.0
 * [nuke](https://nuke.build) 7.0.6  as global tool 
-* PowerShell 7.3.7 (pwsh)
+* PowerShell 7.4.0 (pwsh)
 * Azure Devops credential provider for NuGet
 * docker pushrm 1.9.0 ([Docker Push Readme](https://github.com/christian-korneck/docker-pushrm))
-* git 2.42.0
-* git-lfs 3.4.0
+* git 2.43.0
+* git-lfs 3.4.1
 
 ## Get The Image
 
