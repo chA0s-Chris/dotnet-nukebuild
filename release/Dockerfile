@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0.101-jammy
+FROM mcr.microsoft.com/dotnet/sdk:8.0.203-jammy
 
 ENV POWERSHELL_TELEMETRY_OPTOUT=true \
     DOTNET_CLI_TELEMETRY_OPTOUT=true \
@@ -8,17 +8,17 @@ ENV POWERSHELL_TELEMETRY_OPTOUT=true \
     PATH="$PATH:/root/.dotnet/tools"
 
 # install .NET SDK 7.0
-ENV DOTNET_SDK_VERSION_7="7.0.405"
+ENV DOTNET_SDK_VERSION_7="7.0.407"
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/${DOTNET_SDK_VERSION_7}/dotnet-sdk-${DOTNET_SDK_VERSION_7}-linux-x64.tar.gz \
-    && dotnet_sha512='6cdf82af56f920c87315209f5b5166126e97b13b6d715b6507ddbc9a2eb618f812e43686b79de810ae6a21e0fb5a8e04d68a004f00a07533c8b664f9c889b5b0' \
+    && dotnet_sha512='82e659aee7d3ab6595bfc141f24eda13551f5c5bd9048aad53ebe3963b8e25836ca07eb3d1d39d6adae145db399aab44ed57db27d34119e836202eb3af93c9e3' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && tar -C /usr/share/dotnet -oxzf dotnet.tar.gz ./host ./packs ./sdk ./templates ./shared \
     && rm dotnet.tar.gz
 
 # install .NET SDK 6.0
-ENV DOTNET_SDK_VERSION_6="6.0.418"
+ENV DOTNET_SDK_VERSION_6="6.0.420"
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/${DOTNET_SDK_VERSION_6}/dotnet-sdk-${DOTNET_SDK_VERSION_6}-linux-x64.tar.gz \
-    && dotnet_sha512='24d705157ae51ed5ec5ff267c76474d2ff71b0e56693f700de456321f15212a7791291b95770522a976434f5220e5c03b042f41755a0b6e9854abf73cd51e299' \
+    && dotnet_sha512='53d6e688d0aee8f73edf3ec8e58ed34eca0873a28f0700b71936b9d7cb351864eff8ca593db7fd77659b1710fa421d2f4137da5f98746a85125dc2a49fbffc56' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && tar -C /usr/share/dotnet -oxzf dotnet.tar.gz ./host ./packs ./sdk ./templates ./shared \
     && rm dotnet.tar.gz
@@ -34,8 +34,8 @@ RUN apt-get update \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E1DD270288B4E6030699E45FA1715D88E1DF1F24 \
     && apt-get update \
     && apt-get dist-upgrade -y \
-    && curl -SL --output git-lfs.deb "https://packagecloud.io/github/git-lfs/packages/ubuntu/jammy/git-lfs_3.4.1_amd64.deb/download.deb?distro_version_id=237" \
-    && git_lfs_sha512='9907d92c883a5e82c73657ebf09ce5b18226a1695766f764252d2af33ee28acd7e90bc6d3036363921731ff1eed3f66871e10b4f2abcb1aba9cf2dd9ba35856f ' \
+    && curl -SL --output git-lfs.deb "https://packagecloud.io/github/git-lfs/packages/ubuntu/jammy/git-lfs_3.5.1_amd64.deb/download.deb?distro_version_id=237" \
+    && git_lfs_sha512='ea92d6f08177def2229456ef23ebd071be473ef1710052e0ac05f0001127d85ba4a8e3539f05e61b49d6ce5a8b2ceb18101f7a2e3c6b91b69f6094fb9e36de83' \
     && echo "$git_lfs_sha512 git-lfs.deb" | sha512sum -c - \
     && dpkg -i git-lfs.deb \
     && apt-get install -y docker-ce-cli \
@@ -54,12 +54,12 @@ RUN mkdir -p ~/.docker/cli-plugins \
     && chmod +x ~/.docker/cli-plugins/docker-pushrm
 
 # install kubectl
-ENV KUBECTL_VERSION="1.29.0"
+ENV KUBECTL_VERSION="1.29.2"
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl" \
     && chmod +x kubectl \
     && mv kubectl /usr/bin/kubectl \
     && kubectl 
 
 # install Nuke as global tool
-ENV NUKE_TOOL_VERSION="7.0.6"
+ENV NUKE_TOOL_VERSION="8.0.0"
 RUN dotnet tool install --global Nuke.GlobalTool --version ${NUKE_TOOL_VERSION}
