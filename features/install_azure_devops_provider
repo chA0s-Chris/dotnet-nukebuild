@@ -1,0 +1,5 @@
+# install Azure Devops credential provider
+RUN mkdir -p ~/.nuget && \
+    curl -H "Accept: application/octet-stream" -s -S -L \
+    "https://github.com/Microsoft/artifacts-credprovider/releases/latest/download/Microsoft.NuGet.CredentialProvider.tar.gz" | tar xz -C ~/.nuget plugins/netcore
+

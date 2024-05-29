@@ -1,0 +1,4 @@
+BASE_IMAGE_FILE="./basefiles/sdk-7.0-base"
+IMAGE_TAGS=("7" "7.10")
+
+# install all features

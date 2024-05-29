@@ -1,0 +1,6 @@
+# install git-lfs
+RUN curl -SL --output git-lfs.deb "https://packagecloud.io/github/git-lfs/packages/ubuntu/jammy/git-lfs_3.5.1_amd64.deb/download.deb?distro_version_id=237" \
+    && git_lfs_sha512='ea92d6f08177def2229456ef23ebd071be473ef1710052e0ac05f0001127d85ba4a8e3539f05e61b49d6ce5a8b2ceb18101f7a2e3c6b91b69f6094fb9e36de83' \
+    && echo "$git_lfs_sha512 git-lfs.deb" | sha512sum -c - \
+    && dpkg -i git-lfs.deb
+
