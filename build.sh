@@ -12,6 +12,10 @@ get_docker_pushrm() {
   chmod +x "${DOCKER_PUSHRM_CMD}"
 }
 
+docker_pushrm() {
+  docker pushrm "${BUILD_IMAGE_NAME}"
+}
+
 remove_temp_path() {
   rm -rf "${IMAGE_TEMP_PATH}"
 }
@@ -101,4 +105,5 @@ for image in $(find ./images -type f); do
   push_image
 done
 
+docker_pushrm
 remove_temp_path
