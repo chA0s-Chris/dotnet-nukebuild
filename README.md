@@ -42,17 +42,14 @@ Or visit the [chaos/dotnet-nukebuild page](https://hub.docker.com/r/chaos/dotnet
 
 ## Versioning
 
-Since .NET 6 the major version of this image will always correspond to the highest .NET SDK version included.
+Since .NET 6 the major version of this image will always correspond to the .NET SDK version included.
 
-## Preview .NET 9
+## Preview/RC .NET 9
 
-The current preview version is available using the `preview` tag and also includes:
-
-* .NET Runtime 9.0.0-preview.3.24172.9
-* .NET SDK 9.0.100-preview.3.24204.13
+The current RC version of .NET 9 is available using the `rc` tag.
 
 ```bash
-docker pull chaos/dotnet-nukebuild:preview
+docker pull chaos/dotnet-nukebuild:rc
 ```
 
 ## License
