@@ -4,10 +4,12 @@ IMAGE_TEMP_PATH="./tmp"
 IMAGE_DOCKERFILE="${IMAGE_TEMP_PATH}/Dockerfile"
 FEATURES_PATH="./features"
 
+set -e
+
 get_docker_pushrm() {
-  mkdir -p ${DOCKER_PLUGIN_PATH}
-  curl -L ${DOCKER_PUSHRM_RELEASE} -o ${DOCKER_PUSHRM_CMD}
-  chmod +x ${DOCKER_PUSHRM_CMD}
+  mkdir -p "${DOCKER_PLUGIN_PATH}"
+  curl -L "${DOCKER_PUSHRM_RELEASE}" -o "${DOCKER_PUSHRM_CMD}"
+  chmod +x "${DOCKER_PUSHRM_CMD}"
 }
 
 remove_temp_path() {
@@ -40,12 +42,13 @@ create_image() {
   add_feature "install_docker_pushrm" "${FEATURE_INSTALL_DOCKER_PUSHRM}"
   add_feature "install_kubectl" "${FEATURE_INSTALL_KUBECTL}"
   add_feature "install_nuke" "${FEATURE_INSTALL_NUKE}"
+  add_feature "install_nuke_net6" "${FEATURE_INSTALL_NUKE_NET6}"
 }
 
 create_tag_parameters() {
   TAG_PARAMETERS=""
 
-  for tag in ${IMAGE_TAGS[@]}; do
+  for tag in "${IMAGE_TAGS[@]}"; do
     TAG_PARAMETERS="${TAG_PARAMETERS} -t ${BUILD_IMAGE_NAME}:${tag}"
   done
 }
@@ -58,23 +61,35 @@ build_image() {
   docker build ${TAG_PARAMETERS} -f ${IMAGE_DOCKERFILE} .
 }
 
+push_image() {
+  echo "Pushing image..."
+  
+  for tag in "${IMAGE_TAGS[@]}"; do
+    PUSH_IMAGE="${BUILD_IMAGE_NAME}:${tag}"
+    docker push "${PUSH_IMAGE}"
+  done
+}
+
 # include defaults
 . ./defaults
 
 remove_temp_path
 create_temp_path
 
-#get_docker_pushrm
+get_docker_pushrm
 
 for image in $(find ./images -type f); do
   echo "Image found: ${image}"
+
+  # reset to defaults
+  . ./defaults
 
   # include image configuration
   . ${image}
 
   create_image
   build_image
+  push_image
 done
 
-#remove_temp_path
-
+remove_temp_path

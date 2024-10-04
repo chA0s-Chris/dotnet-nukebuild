@@ -1,4 +1,6 @@
 BASE_IMAGE_FILE="./basefiles/sdk-7.0-base"
-IMAGE_TAGS=("7" "7.10")
+IMAGE_TAGS=("7" "7.11")
 
 # install all features
+FEATURE_INSTALL_NUKE=false
+FEATURE_INSTALL_NUKE_NET6=true
