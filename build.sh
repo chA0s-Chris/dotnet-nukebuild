@@ -45,6 +45,14 @@ create_image() {
   add_feature "install_nuke_net6" "${FEATURE_INSTALL_NUKE_NET6}"
 }
 
+docker_login() {
+  if [ -n "${CI_DOCKER_TOKEN}" ] && [ -n "${CI_DOCKER_LOGIN}" ]; then
+    echo "${CI_DOCKER_TOKEN}" | docker login -u "${CI_DOCKER_LOGIN}" --password-stdin
+  else
+    echo "WARNING: docker login skipped."
+  fi
+}
+
 create_tag_parameters() {
   TAG_PARAMETERS=""
 
@@ -77,6 +85,7 @@ remove_temp_path
 create_temp_path
 
 get_docker_pushrm
+docker_login
 
 for image in $(find ./images -type f); do
   echo "Image found: ${image}"
