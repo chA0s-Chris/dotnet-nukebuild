@@ -12,7 +12,7 @@ environment:
     secure: l9ZZeorsM3mx7bzzLb8dB2jeae32eVSg4eX44Rq3GjOCcZNQewDj2pztnJ4i7bsy
 
 build_script:
-  - sh: sh build.sh
+  - sh: bash build.sh
 
 on_finish:
   - sh: docker logout
