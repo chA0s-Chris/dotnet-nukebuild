@@ -1,5 +1,5 @@
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/latest?label=Current&style=for-the-badge)
-![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/preview?color=%23dd0000&label=Preview&style=for-the-badge)
+![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/rc?color=%23dd0000&label=RC&style=for-the-badge)
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/7?label=SDK%207%20(EOL)&style=for-the-badge)
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/6?label=SDK%206%20(LTS)&style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/chA0s-Chris/dotnet-nukebuild?style=for-the-badge)
