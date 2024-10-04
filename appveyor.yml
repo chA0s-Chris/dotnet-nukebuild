@@ -1,6 +1,6 @@
 version: "{build}"
 
-image: Ubuntu2004
+image: Ubuntu2204
 
 branches:
   only:
