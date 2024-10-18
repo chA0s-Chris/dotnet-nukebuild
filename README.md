@@ -17,10 +17,10 @@ The image is tagged for the current .NET releases and is bases on the correspond
 
 | Tags      | Status | SDK                   | Runtime            | Base         |
 | --------- | ------ | --------------------- | ------------------ | ------------ |
-| 8, latest | LTS    | 8.0.402               | 8.0.8              | Ubuntu Jammy |
-| 9-rc, rc  | RC     | 9.0.100-rc.1.24452.12 | 9.0.0-rc.1.24452.1 | Ubuntu Noble |
+| 8, latest | LTS    | 8.0.403               | 8.0.10             | Ubuntu Jammy |
+| 9-rc, rc  | RC     | 9.0.100-rc.2.24474.11 | 9.0.0-rc.2.24473.5 | Ubuntu Noble |
 | 7         | EOL ⚠️  | 7.0.410               | 7.0.20             | Ubuntu Jammy |
-| 6         | LTS    | 6.0.422               | 6.0.30             | Ubuntu Jammy |
+| 6         | LTS    | 6.0.427               | 6.0.35             | Ubuntu Jammy |
 
 ## Additional software
 
