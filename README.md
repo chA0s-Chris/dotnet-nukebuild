@@ -1,6 +1,5 @@
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/latest?label=Current&style=for-the-badge)
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/rc?color=%23dd0000&label=RC&style=for-the-badge)
-![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/7?label=SDK%207%20(EOL)&style=for-the-badge)
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/6?label=SDK%206%20(LTS)&style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/chA0s-Chris/dotnet-nukebuild?style=for-the-badge)
 ![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/chaos/dotnet-nukebuild/latest?style=for-the-badge)
@@ -19,7 +18,6 @@ The image is tagged for the current .NET releases and is bases on the correspond
 | --------- | ------ | --------------------- | ------------------ | ------------ |
 | 8, latest | LTS    | 8.0.403               | 8.0.10             | Ubuntu Jammy |
 | 9-rc, rc  | RC     | 9.0.100-rc.2.24474.11 | 9.0.0-rc.2.24473.5 | Ubuntu Noble |
-| 7         | EOL ⚠️  | 7.0.410               | 7.0.20             | Ubuntu Jammy |
 | 6         | LTS    | 6.0.427               | 6.0.35             | Ubuntu Jammy |
 
 ## Additional software
