@@ -1,2 +1,2 @@
-FROM mcr.microsoft.com/dotnet/sdk:9.0.100-rc.1-noble
+FROM mcr.microsoft.com/dotnet/sdk:9.0.100-rc.2-noble
 
