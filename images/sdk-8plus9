@@ -1,0 +1,5 @@
+BASE_IMAGE_FILE="./basefiles/sdk-9.0-base"
+IMAGE_TAGS=("8plus9")
+
+# install all features
+FEATURE_INSTALL_DOTNET_8_SDK=true

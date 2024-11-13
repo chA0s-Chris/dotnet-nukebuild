@@ -40,6 +40,7 @@ create_image() {
 
   add_feature "set_environment" "${FEATURE_SET_ENVIRONMENT}"
   add_feature "update_distro" "${FEATURE_UPDATE_DISTRO}"
+  add_feature "install_dotnet_8_sdk" "${FEATURE_INSTALL_DOTNET_8_SDK}"
   add_feature "install_docker" "${FEATURE_INSTALL_DOCKER}"
   add_feature "install_git-lfs" "${FEATURE_INSTALL_GIT_LFS}"
   add_feature "install_azure_devops_provider" "${FEATURE_INSTALL_AZURE_DEVOPS_PROVIDER}"
