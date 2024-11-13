@@ -1,0 +1,3 @@
+# install aspire workload
+RUN dotnet workload install aspire
+

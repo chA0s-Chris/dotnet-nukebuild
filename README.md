@@ -29,6 +29,7 @@ The image is tagged for the current .NET releases and is bases on the correspond
 * docker pushrm 1.9.0 ([Docker Push Readme](https://github.com/christian-korneck/docker-pushrm))
 * git 2.34.1 / 2.43.0
 * git-lfs 3.5.1
+* .NET Aspire SDK
 
 ## Get The Image
 

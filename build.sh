@@ -47,6 +47,7 @@ create_image() {
   add_feature "install_kubectl" "${FEATURE_INSTALL_KUBECTL}"
   add_feature "install_nuke" "${FEATURE_INSTALL_NUKE}"
   add_feature "install_nuke_net6" "${FEATURE_INSTALL_NUKE_NET6}"
+  add_feature "install_aspire_workload" "${FEATURE_INSTALL_ASPIRE_WORKLOAD}"
 }
 
 docker_login() {
