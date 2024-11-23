@@ -17,7 +17,6 @@ The image is tagged for the current .NET releases and is bases on the correspond
 | Tags      | Status | SDK     | Runtime | Base         |
 |-----------|--------|---------|---------| ------------ |
 | 9, latest | STS    | 9.0.100 | 9.0.0   | Ubuntu Noble |
-| 8plus9    | temp   | 8 + 9   | 8 + 9   | Ubuntu Noble |
 | 8         | LTS    | 8.0.404 | 8.0.11  | Ubuntu Jammy |
 | 6         | LTS    | 6.0.428 | 6.0.36  | Ubuntu Jammy |
 
@@ -25,7 +24,7 @@ The image is tagged for the current .NET releases and is bases on the correspond
 
 * Docker CLI 27.3.1
 * kubectl 1.31.0
-* [nuke](https://nuke.build) 8.1.4 as global tool 
+* [nuke](https://nuke.build) 9.0.1 as global tool 
 * Azure Devops credential provider for NuGet
 * docker pushrm 1.9.0 ([Docker Push Readme](https://github.com/christian-korneck/docker-pushrm))
 * git 2.34.1 / 2.43.0
@@ -47,11 +46,6 @@ Since .NET 6 the major version of this image will always correspond to the .NET 
 ## Preview/RC
 
 The is currently no preview/rc available.
-
-## Notes on 8plus9
-
-Since nuke doesn't currently support .NET 9 due to its dependency to the now removed BinaryFormatter,
-there will be an extra image tagged `8+9` containing the latest 8.x and 9.x SDKs/runtimes. 
 
 ## License
 
