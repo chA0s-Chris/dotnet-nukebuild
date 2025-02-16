@@ -1,7 +1,7 @@
 # install kubectl
-ENV KUBECTL_VERSION="1.32.1"
+ENV KUBECTL_VERSION="1.32.2"
 RUN curl -L https://dl.k8s.io/v${KUBECTL_VERSION}/kubernetes-client-linux-amd64.tar.gz -o kubectl.tgz \
-    && kubectl_sha512='3eff144cdc8db4681fcf9b2205fa732ea7836e7878d9cc5617171970bbf80813eea45d08e1d00f6d652b6364c4a099e3e40a2a6a3ddad11a9896c73cda3118d2' \
+    && kubectl_sha512='0f27d1918088df6a672f42b13cf213acb5e7499db1b9db5191478adb2ca0c350ba8f5004ceee3798b0ff47fc358bf2fb37097c1113f603dbedd0d00ae0dbaf7f' \
     && echo "$kubectl_sha512 kubectl.tgz" | sha512sum -c - \
     && tar --strip-components=3 -xzvf kubectl.tgz kubernetes/client/bin/kubectl -C . \
     && rm kubectl.tgz \
