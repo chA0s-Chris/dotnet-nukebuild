@@ -1,4 +1,5 @@
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/latest?label=Current&style=for-the-badge)
+![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/preview?color=%23dd0000&label=Preview&style=for-the-badge)
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/8?label=SDK%208%20(LTS)&style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/chA0s-Chris/dotnet-nukebuild?style=for-the-badge)
 ![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/chaos/dotnet-nukebuild/latest?style=for-the-badge)
@@ -13,10 +14,11 @@ The image is tagged for the current .NET releases and is bases on the correspond
 
 ## Tags
 
-| Tags      | Status | SDK     | Runtime | Base         |
-| --------- | ------ |---------|---------| ------------ |
-| 9, latest | STS    | 9.0.200 | 9.0.2   | Ubuntu Noble |
-| 8         | LTS    | 8.0.406 | 8.0.13  | Ubuntu Noble |
+| Tags                | Status  | SDK                         | Runtime                  | Base         |
+| ------------------- | ------- | --------------------------- | ------------------------ | ------------ |
+| 9, latest           | STS     | 9.0.200                     | 9.0.2                    | Ubuntu Noble |
+| 10-preview, preview | Preview | 10.0.100-preview.1.25120.13 | 10.0.0-preview.1.25080.5 | Ubuntu Noble |
+| 8                   | LTS     | 8.0.406                     | 8.0.13                   | Ubuntu Noble |
 
 ## Additional software
 
@@ -41,9 +43,13 @@ Or visit the [chaos/dotnet-nukebuild page](https://hub.docker.com/r/chaos/dotnet
 
 Since .NET 6 the major version of this image will always correspond to the .NET SDK version included.
 
-## Preview/RC
+## Preview/RC .NET 10
 
-The is currently no preview/rc available.
+The current preview of .NET 10 is available using the `preview` tag.
+
+```bash
+docker pull chaos/dotnet-nukebuild:preview
+```
 
 ## License
 
