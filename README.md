@@ -15,8 +15,8 @@ The image is tagged for the current .NET releases and is bases on the correspond
 ## Tags
 
 | Tags                | Status  | SDK                         | Runtime                  | Base         |
-| ------------------- | ------- |-----------------------------|--------------------------| ------------ |
-| 9, latest           | STS     | 9.0.201                     | 9.0.3                    | Ubuntu Noble |
+| ------------------- | ------- | --------------------------- | ------------------------ | ------------ |
+| 9, latest           | STS     | 9.0.202                     | 9.0.3                    | Ubuntu Noble |
 | 10-preview, preview | Preview | 10.0.100-preview.1.25120.13 | 10.0.0-preview.1.25080.5 | Ubuntu Noble |
 | 8                   | LTS     | 8.0.407                     | 8.0.14                   | Ubuntu Noble |
 
