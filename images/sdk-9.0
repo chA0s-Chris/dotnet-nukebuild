@@ -1,4 +1,4 @@
 BASE_IMAGE_FILE="./basefiles/sdk-9.0-base"
-IMAGE_TAGS=("9" "latest" "9.5")
+IMAGE_TAGS=("9" "latest" "9.6")
 
 # install all features
