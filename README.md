@@ -16,13 +16,13 @@ The image is tagged for the current .NET releases and is bases on the correspond
 
 | Tags                | Status  | SDK                          | Runtime                    | Base         |
 | ------------------- | ------- |------------------------------|----------------------------| ------------ |
-| 9, latest           | STS     | 9.0.301                      | 9.0.6                      | Ubuntu Noble |
+| 9, latest           | STS     | 9.0.302                      | 9.0.7                      | Ubuntu Noble |
 | 10-preview, preview | Preview | 10.0.100-preview.5.25277.114 | 10.0.0-preview.5.25277.114 | Ubuntu Noble |
-| 8                   | LTS     | 8.0.411                      | 8.0.17                     | Ubuntu Noble |
+| 8                   | LTS     | 8.0.412                      | 8.0.18                     | Ubuntu Noble |
 
 ## Additional software
 
-* Docker CLI 28.1.1
+* Docker CLI 28.3.2
 * kubectl 1.33.0
 * [nuke](https://nuke.build) 9.0.4 as global tool 
 * Azure Devops credential provider for NuGet
