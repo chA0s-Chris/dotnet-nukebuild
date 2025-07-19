@@ -1,4 +1,4 @@
 BASE_IMAGE_FILE="./basefiles/sdk-10.0-base"
-IMAGE_TAGS=("10-preview" "10-preview.5" "preview" "preview-5")
+IMAGE_TAGS=("10-preview" "10-preview.6" "preview" "preview-6")
 
 # install all features

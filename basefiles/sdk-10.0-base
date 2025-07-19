@@ -1,2 +1,2 @@
-FROM mcr.microsoft.com/dotnet/sdk:10.0.100-preview.5-noble
+FROM mcr.microsoft.com/dotnet/sdk:10.0.100-preview.6-noble
 
