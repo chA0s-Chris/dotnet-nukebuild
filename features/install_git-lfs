@@ -1,6 +1,6 @@
 # install git-lfs
-RUN curl -SL --output git-lfs.deb "https://packagecloud.io/github/git-lfs/packages/ubuntu/noble/git-lfs_3.6.1_amd64.deb/download.deb?distro_version_id=284" \
-    && git_lfs_sha512='0b8fff97faab437bcee8e59385981d8e6b11fd9a5c5e3fc9b71667cad4436744af8c4fb3a56fc06cfa67ff5b8054e0efbc9e9aff69c18f61e1e98a9c744421af' \
+RUN curl -SL --output git-lfs.deb "https://packagecloud.io/github/git-lfs/packages/ubuntu/noble/git-lfs_3.7.0_amd64.deb/download.deb?distro_version_id=284" \
+    && git_lfs_sha512='021240ac4878e2ec4e282e07e28b8248c392ec7dba0284bc82da8f48334000da25e51680feb908c3d17a0cb2a10726d6e8bb6b302a0e5900100f5b5edea20cdc' \
     && echo "$git_lfs_sha512 git-lfs.deb" | sha512sum -c - \
     && dpkg -i git-lfs.deb
 
