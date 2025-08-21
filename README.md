@@ -30,6 +30,7 @@ The image is tagged for the current .NET releases and is bases on the correspond
 * git 2.43.0
 * git-lfs 3.7.0
 * .NET Aspire SDK
+* Node.js 22.18.0
 
 ## Get The Image
 
