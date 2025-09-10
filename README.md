@@ -1,5 +1,5 @@
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/latest?label=Current&style=for-the-badge)
-![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/preview?color=%23dd0000&label=Preview&style=for-the-badge)
+![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/rc?color=%23dd0000&label=RC&style=for-the-badge)
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/8?label=SDK%208%20(LTS)&style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/chA0s-Chris/dotnet-nukebuild?style=for-the-badge)
 ![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/chaos/dotnet-nukebuild/latest?style=for-the-badge)
@@ -14,11 +14,11 @@ The image is tagged for the current .NET releases and is bases on the correspond
 
 ## Tags
 
-| Tags                | Status  | SDK                          | Runtime                    | Base         |
-| ------------------- | ------- |------------------------------|----------------------------| ------------ |
-| 9, latest           | STS     | 9.0.304                      | 9.0.8                      | Ubuntu Noble |
-| 10-preview, preview | Preview | 10.0.100-preview.7.25380.108 | 10.0.0-preview.7.25380.108 | Ubuntu Noble |
-| 8                   | LTS     | 8.0.413                      | 8.0.19                     | Ubuntu Noble |
+| Tags                | Status  | SDK                     | Runtime               | Base         |
+| ------------------- | ------- |-------------------------|-----------------------| ------------ |
+| 9, latest           | STS     | 9.0.305                 | 9.0.9                 | Ubuntu Noble |
+| 10-preview, preview | Preview | 10.0.100-rc.1.25451.107 | 10.0.0-rc.1.25451.107 | Ubuntu Noble |
+| 8                   | LTS     | 8.0.414                 | 8.0.20                | Ubuntu Noble |
 
 ## Additional software
 
@@ -46,10 +46,10 @@ Since .NET 6 the major version of this image will always correspond to the .NET 
 
 ## Preview/RC .NET 10
 
-The current preview of .NET 10 is available using the `preview` tag.
+The current release candidate of .NET 10 is available using the `rc` tag.
 
 ```bash
-docker pull chaos/dotnet-nukebuild:preview
+docker pull chaos/dotnet-nukebuild:rc
 ```
 
 ## License
