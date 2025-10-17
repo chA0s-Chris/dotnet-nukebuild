@@ -1,4 +1,4 @@
 BASE_IMAGE_FILE="./basefiles/sdk-10.0-base"
-IMAGE_TAGS=("10-rc" "10-rc.1")
+IMAGE_TAGS=("10-rc" "10-rc.2")
 
 # install all features
