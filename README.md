@@ -1,5 +1,5 @@
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/latest?label=Current&style=for-the-badge)
-![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/rc?color=%23dd0000&label=RC&style=for-the-badge)
+![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/9?label=SDK%209%20(STS)&style=for-the-badge)
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/8?label=SDK%208%20(LTS)&style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/chA0s-Chris/dotnet-nukebuild?style=for-the-badge)
 ![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/chaos/dotnet-nukebuild/latest?style=for-the-badge)
@@ -14,23 +14,23 @@ The image is tagged for the current .NET releases and is bases on the correspond
 
 ## Tags
 
-| Tags           | Status | SDK                     | Runtime               | Base         |
-|----------------|--------|-------------------------|-----------------------| ------------ |
-| 9, latest      | STS    | 9.0.306                 | 9.0.10                | Ubuntu Noble |
-| 10-rc.2, 10-rc | RC     | 10.0.100-rc.2.25502.107 | 10.0.0-rc.2.25502.107 | Ubuntu Noble |
-| 8              | LTS    | 8.0.415                 | 8.0.21                | Ubuntu Noble |
+| Tags       | Status | SDK       | Runtime | Base         |
+|------------|--------|-----------|---------| ------------ |
+| 10, latest | LTS    | 10.0.100  | 10.0.0  | Ubuntu Noble |
+| 9          | STS    | 9.0.307   | 9.0.11  | Ubuntu Noble |
+| 8          | LTS    | 8.0.416   | 8.0.22  | Ubuntu Noble |
 
 ## Additional software
 
-* Docker CLI 28.5.1
-* kubectl 1.34.1
+* Docker CLI 29.0.0
+* kubectl 1.34.2
 * [nuke](https://nuke.build) 9.0.4 as global tool 
 * Azure Devops credential provider for NuGet
 * docker pushrm 1.9.0 ([Docker Push Readme](https://github.com/christian-korneck/docker-pushrm))
 * git 2.43.0
 * git-lfs 3.7.0
 * .NET Aspire SDK
-* Node.js 22.20.0
+* Node.js 22.21.0
 
 ## Get The Image
 
@@ -44,13 +44,9 @@ Or visit the [chaos/dotnet-nukebuild page](https://hub.docker.com/r/chaos/dotnet
 
 Since .NET 6 the major version of this image will always correspond to the .NET SDK version included.
 
-## Preview/RC .NET 10
+## Preview/RC
 
-The current release candidate of .NET 10 is available using the `rc` tag.
-
-```bash
-docker pull chaos/dotnet-nukebuild:rc
-```
+The is currently no preview/RC version of .NET available.
 
 ## License
 
