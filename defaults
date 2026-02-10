@@ -9,7 +9,6 @@ DOCKER_PUSHRM_RELEASE="https://github.com/christian-korneck/docker-pushrm/releas
 ###
 ### features
 ###
-FEATURE_INSTALL_ASPIRE_WORKLOAD=true
 FEATURE_INSTALL_AZURE_DEVOPS_PROVIDER=true
 FEATURE_INSTALL_DOCKER=true
 FEATURE_INSTALL_DOCKER_PUSHRM=true
