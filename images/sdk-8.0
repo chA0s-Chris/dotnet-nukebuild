@@ -1,4 +1,4 @@
 BASE_IMAGE_FILE="./basefiles/sdk-8.0-base"
-IMAGE_TAGS=("8" "8.22")
+IMAGE_TAGS=("8" "8.23")
 
 # install all features
