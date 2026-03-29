@@ -16,7 +16,7 @@ The image is tagged for the current .NET releases and is bases on the correspond
 
 | Tags       | Status | SDK      | Runtime | Base         |
 |------------|--------|----------|---------| ------------ |
-| 10, latest | LTS    | 10.0.200 | 10.0.4  | Ubuntu Noble |
+| 10, latest | LTS    | 10.0.201 | 10.0.5  | Ubuntu Noble |
 | 9          | STS    | 9.0.312  | 9.0.14  | Ubuntu Noble |
 | 8          | LTS    | 8.0.419  | 8.0.25  | Ubuntu Noble |
 
