@@ -1,0 +1,6 @@
+BASE_IMAGE_FILE="./basefiles/sdk-11.0-base"
+IMAGE_TAGS=("11-preview" "11-preview.3" "preview" "preview-3")
+
+# install all features
+FEATURE_INSTALL_NUKE=true
+FEATURE_INSTALL_NUKE9=false

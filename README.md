@@ -1,4 +1,5 @@
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/latest?label=Current&style=for-the-badge)
+![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/preview?color=%23dd0000&label=Preview&style=for-the-badge)
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/9?label=SDK%209%20(STS)&style=for-the-badge)
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/8?label=SDK%208%20(LTS)&style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/chA0s-Chris/dotnet-nukebuild?style=for-the-badge)
@@ -14,11 +15,12 @@ The image is tagged for the current .NET releases and is bases on the correspond
 
 ## Tags
 
-| Tags       | Status | SDK      | Runtime | Base         |
-|------------|--------|----------|---------| ------------ |
-| 10, latest | LTS    | 10.0.202 | 10.0.6  | Ubuntu Noble |
-| 9          | STS    | 9.0.313  | 9.0.15  | Ubuntu Noble |
-| 8          | LTS    | 8.0.420  | 8.0.26  | Ubuntu Noble |
+| Tags                 | Status   | SDK                          | Runtime                    | Base            |
+|----------------------|----------|------------------------------|----------------------------|-----------------|
+| 10, latest           | LTS      | 10.0.202                     | 10.0.6                     | Ubuntu Noble    |
+| 11-preview, preview  | Preview  | 11.0.100-preview.3.26207.106 | 11.0.0-preview.3.26207.106 | Ubuntu Resolute |
+| 9                    | STS      | 9.0.313                      | 9.0.15                     | Ubuntu Noble    |
+| 8                    | LTS      | 8.0.420                      | 8.0.26                     | Ubuntu Noble    |
 
 ## Additional software
 
@@ -44,9 +46,9 @@ Or visit the [chaos/dotnet-nukebuild page](https://hub.docker.com/r/chaos/dotnet
 
 Since .NET 6 the major version of this image will always correspond to the .NET SDK version included.
 
-## Preview/RC
+## Preview/RC .NET 11
 
-The is currently no preview/RC version of .NET available.
+The current preview of .NET 11 is available using the `preview` tag.
 
 ## License
 
