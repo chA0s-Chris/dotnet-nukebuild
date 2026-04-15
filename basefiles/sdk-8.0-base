@@ -1,2 +1,2 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0.419-noble
+FROM mcr.microsoft.com/dotnet/sdk:8.0.420-noble
 
