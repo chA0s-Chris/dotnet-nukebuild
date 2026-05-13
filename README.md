@@ -17,14 +17,14 @@ The image is tagged for the current .NET releases and is based on the correspond
 
 | Tags                 | Status   | SDK                          | Runtime                    | Base            |
 |----------------------|----------|------------------------------|----------------------------|-----------------|
-| 10, latest           | LTS      | 10.0.202                     | 10.0.6                     | Ubuntu Noble    |
-| 11-preview, preview  | Preview  | 11.0.100-preview.3.26207.106 | 11.0.0-preview.3.26207.106 | Ubuntu Resolute |
-| 9                    | STS      | 9.0.313                      | 9.0.15                     | Ubuntu Noble    |
-| 8                    | LTS      | 8.0.420                      | 8.0.26                     | Ubuntu Noble    |
+| 10, latest           | LTS      | 10.0.300                     | 10.0.8                     | Ubuntu Noble    |
+| 11-preview, preview  | Preview  | 11.0.100-preview.4.26230.115 | 11.0.0-preview.4.26230.115 | Ubuntu Resolute |
+| 9                    | STS      | 9.0.314                      | 9.0.16                     | Ubuntu Noble    |
+| 8                    | LTS      | 8.0.421                      | 8.0.27                     | Ubuntu Noble    |
 
 ## Additional software
 
-* Docker CLI 29.4.0
+* Docker CLI 29.4.3
 * kubectl 1.35.3
 * [nuke](https://nuke.build) 9.0.4 (10.1.0) as global tool 
 * Azure Artifacts Credential Provider
@@ -32,7 +32,7 @@ The image is tagged for the current .NET releases and is based on the correspond
 * git 2.43.0
 * git-lfs 3.7.1
 * .NET Aspire SDK
-* Node.js 24.14.1
+* Node.js 24.15.0
 
 ## Get The Image
 
