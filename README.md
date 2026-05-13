@@ -11,7 +11,7 @@
 
 A Linux-based Docker image intended to use with CI/CD servers for building .NET Core applications.
 
-The image is tagged for the current .NET releases and is bases on the corresponding official .NET SDK (Ubuntu flavor). 
+The image is tagged for the current .NET releases and is based on the corresponding official .NET SDK (Ubuntu flavor). 
 
 ## Tags
 
