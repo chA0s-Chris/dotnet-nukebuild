@@ -1,2 +1,2 @@
-FROM mcr.microsoft.com/dotnet/sdk:11.0.100-preview.4-resolute
+FROM mcr.microsoft.com/dotnet/sdk:11.0.100-preview.5-resolute
 
