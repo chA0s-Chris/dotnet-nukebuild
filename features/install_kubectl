@@ -1,7 +1,7 @@
 # install kubectl
-ENV KUBECTL_VERSION="1.36.2"
+ENV KUBECTL_VERSION="1.36.3"
 RUN curl -L https://dl.k8s.io/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl -o kubectl \
-    && kubectl_sha512='b7cdd298dd1530d82b0c6f3529f0e9e34bd57a234fdbca544f942597e7d290b49dc1687fc610b0d2bbe615788a32c8ee0ea8bb9c885c5ba1129a8e91d0fa3a12' \
+    && kubectl_sha512='3393cd644d0097141ee9a2b7a7c7969edfe6bb1ea0fe8cb9e6d096dd45f2b9f7d6bdd3f14a8093e787caa9334a6b2c7aeea5f5cebe967ef82ba14869862ea316' \
     && echo "$kubectl_sha512 kubectl" | sha512sum -c - \
     && chmod +x kubectl \
     && mv kubectl /usr/bin/kubectl \
