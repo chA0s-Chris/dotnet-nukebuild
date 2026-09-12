@@ -14,6 +14,16 @@ permissions:
   contents: read
 
 jobs:
+  lint:
+    name: Lint shell scripts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Run shellcheck
+        run: ./scripts/check-shell.sh
+
   check:
     name: Check rendering
     runs-on: ubuntu-latest
@@ -63,6 +73,7 @@ jobs:
   result:
     name: CI result
     needs:
+      - lint
       - check
       - build
     if: always()
@@ -70,10 +81,11 @@ jobs:
     steps:
       - name: Require every job to succeed
         env:
+          LINT: ${{ needs.lint.result }}
           CHECK: ${{ needs.check.result }}
           BUILD: ${{ needs.build.result }}
         run: |
-          if [ "${CHECK}" != success ] || [ "${BUILD}" != success ]; then
-            echo "check: ${CHECK}, build: ${BUILD}" >&2
+          if [ "${LINT}" != success ] || [ "${CHECK}" != success ] || [ "${BUILD}" != success ]; then
+            echo "lint: ${LINT}, check: ${CHECK}, build: ${BUILD}" >&2
             exit 1
           fi
