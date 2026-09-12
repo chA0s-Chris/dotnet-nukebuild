@@ -28,7 +28,9 @@ jobs:
 
       - name: Enumerate images
         id: images
-        run: echo "images=$(./scripts/list-images.sh)" >> "${GITHUB_OUTPUT}"
+        run: |
+          images="$(./scripts/list-images.sh)"
+          echo "images=${images}" >> "${GITHUB_OUTPUT}"
 
   build:
     name: Build ${{ matrix.image.config }}

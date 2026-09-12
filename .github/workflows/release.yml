@@ -68,7 +68,8 @@ jobs:
             exit 1
           fi
 
-          echo "images=$(printf '%s' "${result}" | jq -c '.selected')" >> "${GITHUB_OUTPUT}"
+          selected="$(printf '%s' "${result}" | jq -c '.selected')"
+          echo "images=${selected}" >> "${GITHUB_OUTPUT}"
 
   publish:
     name: Publish ${{ matrix.image.config }}
