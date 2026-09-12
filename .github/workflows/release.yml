@@ -117,6 +117,8 @@ jobs:
         with:
           context: tmp/context
           push: true
+          provenance: false
+          sbom: false
           tags: ${{ steps.compose.outputs.tags }}
 
   description:
@@ -138,6 +140,7 @@ jobs:
           . ./defaults
           mkdir -p "${DOCKER_PLUGIN_PATH}"
           curl -fsSL "${DOCKER_PUSHRM_RELEASE}" -o "${DOCKER_PUSHRM_CMD}"
+          echo "${DOCKER_PUSHRM_SHA512}  ${DOCKER_PUSHRM_CMD}" | sha512sum -c -
           chmod +x "${DOCKER_PUSHRM_CMD}"
 
       - name: Push README to Docker Hub
