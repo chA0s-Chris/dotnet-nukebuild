@@ -1,5 +1,5 @@
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/latest?label=Current&style=for-the-badge)
-![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/preview?color=%23dd0000&label=Preview&style=for-the-badge)
+![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/11-rc?color=%23dd0000&label=RC&style=for-the-badge)
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/9?label=SDK%209%20(STS)&style=for-the-badge)
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/8?label=SDK%208%20(LTS)&style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/chA0s-Chris/dotnet-nukebuild?style=for-the-badge)
@@ -15,24 +15,24 @@ The image is tagged for the current .NET releases and is based on the correspond
 
 ## Tags
 
-| Tags                 | Status   | SDK                          | Runtime                    | Base            |
-|----------------------|----------|------------------------------|----------------------------|-----------------|
-| 10, latest           | LTS      | 10.0.400                     | 10.0.11                    | Ubuntu Noble    |
-| 11-preview, preview  | Preview  | 11.0.100-preview.7.26381.103 | 11.0.0-preview.7.26381.103 | Ubuntu Resolute |
-| 9                    | STS      | 9.0.317                      | 9.0.19                     | Ubuntu Noble    |
-| 8                    | LTS      | 8.0.424                      | 8.0.30                     | Ubuntu Noble    |
+| Tags            | Status   | SDK                     | Runtime               | Base            |
+|-----------------|----------|-------------------------|-----------------------|-----------------|
+| 10, latest      | LTS      | 10.0.401                | 10.0.12               | Ubuntu Noble    |
+| 11-rc.1, 11-rc  | RC       | 11.0.100-rc.1.26425.128 | 11.0.0-rc.1.26425.128 | Ubuntu Resolute |
+| 9               | STS      | 9.0.318                 | 9.0.20                | Ubuntu Noble    |
+| 8               | LTS      | 8.0.425                 | 8.0.31                | Ubuntu Noble    |
 
 ## Additional software
 
-* Docker CLI 29.7.2
-* kubectl 1.36.3
+* Docker CLI 29.8.0
+* kubectl 1.37.0
 * [nuke](https://nuke.build) 9.0.4 (10.1.0) as global tool 
 * Azure Artifacts Credential Provider
 * docker pushrm 1.9.0 ([Docker Push Readme](https://github.com/christian-korneck/docker-pushrm))
 * git 2.43.0
-* git-lfs 3.7.1
+* git-lfs 3.8.0
 * .NET Aspire SDK
-* Node.js 24.19.0
+* Node.js 24.21.0
 
 ## Get The Image
 
@@ -48,7 +48,7 @@ Since .NET 6 the major version of this image will always correspond to the .NET 
 
 ## Preview/RC .NET 11
 
-The current preview of .NET 11 is available using the `preview` tag.
+The current release candidate of .NET 11 is available using the `11-rc` tag.
 
 ## License
 
