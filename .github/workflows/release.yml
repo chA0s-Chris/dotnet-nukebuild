@@ -75,6 +75,7 @@ jobs:
     name: Publish ${{ matrix.image.config }}
     needs: prepare
     runs-on: ubuntu-latest
+    environment: release
     strategy:
       fail-fast: false
       matrix:
@@ -126,6 +127,7 @@ jobs:
     name: Update Docker Hub description
     needs: publish
     runs-on: ubuntu-latest
+    environment: release
     steps:
       - name: Check out
         uses: actions/checkout@v7
