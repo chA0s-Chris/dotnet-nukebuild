@@ -59,3 +59,21 @@ jobs:
         with:
           context: tmp/context
           push: false
+
+  result:
+    name: CI result
+    needs:
+      - check
+      - build
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require every job to succeed
+        env:
+          CHECK: ${{ needs.check.result }}
+          BUILD: ${{ needs.build.result }}
+        run: |
+          if [ "${CHECK}" != success ] || [ "${BUILD}" != success ]; then
+            echo "check: ${CHECK}, build: ${BUILD}" >&2
+            exit 1
+          fi
