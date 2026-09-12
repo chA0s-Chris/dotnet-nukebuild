@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Check rendering
+    runs-on: ubuntu-latest
+    outputs:
+      images: ${{ steps.images.outputs.images }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Verify rendered Dockerfiles
+        run: ./scripts/check-render.sh
+
+      - name: Enumerate images
+        id: images
+        run: echo "images=$(./scripts/list-images.sh)" >> "${GITHUB_OUTPUT}"
+
+  build:
+    name: Build ${{ matrix.image.config }}
+    needs: check
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ${{ fromJSON(needs.check.outputs.images) }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Render Dockerfile
+        env:
+          IMAGE_CONFIG: ${{ matrix.image.config }}
+        run: |
+          mkdir -p tmp/context
+          ./scripts/render-dockerfile.sh "images/${IMAGE_CONFIG}" > tmp/context/Dockerfile
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build image
+        uses: docker/build-push-action@v6
+        with:
+          context: tmp/context
+          push: false

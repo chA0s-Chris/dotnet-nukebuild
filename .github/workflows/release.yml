@@ -1,0 +1,146 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      images:
+        description: "Image configurations to publish, comma separated (for example sdk-9.0). Empty publishes all."
+        required: false
+        default: ""
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    name: Prepare
+    runs-on: ubuntu-latest
+    outputs:
+      images: ${{ steps.images.outputs.images }}
+      image_name: ${{ steps.name.outputs.image_name }}
+    steps:
+      - name: Refuse to publish from a ref other than main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "release must be dispatched from main" >&2
+          exit 1
+
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Verify rendered Dockerfiles
+        run: ./scripts/check-render.sh
+
+      - name: Read image name
+        id: name
+        run: |
+          . ./defaults
+          echo "image_name=${BUILD_IMAGE_NAME}" >> "${GITHUB_OUTPUT}"
+
+      - name: Select images
+        id: images
+        env:
+          SELECTED: ${{ inputs.images }}
+        run: |
+          available="$(./scripts/list-images.sh)"
+
+          # an empty or separator-only input publishes every image
+          if [ -z "$(printf '%s' "${SELECTED}" | tr -d '[:space:],')" ]; then
+            echo "images=${available}" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+
+          result="$(jq -nc --arg selected "${SELECTED}" --argjson images "${available}" '
+            ($selected | split(",") | map(sub("^\\s+"; "") | sub("\\s+$"; "")) | map(select(length > 0))) as $wanted
+            | ([$images[].config]) as $known
+            | { unknown:  [$wanted[] | select(. as $want | $known | index($want) | not)],
+                selected: [$images[] | select(.config as $config | $wanted | index($config))] }')"
+
+          unknown="$(printf '%s' "${result}" | jq -r '.unknown | join(", ")')"
+
+          if [ -n "${unknown}" ]; then
+            echo "unknown image configuration: ${unknown}" >&2
+            printf '%s' "${available}" | jq -r '.[].config' | sed 's/^/  available: /' >&2
+            exit 1
+          fi
+
+          echo "images=$(printf '%s' "${result}" | jq -c '.selected')" >> "${GITHUB_OUTPUT}"
+
+  publish:
+    name: Publish ${{ matrix.image.config }}
+    needs: prepare
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ${{ fromJSON(needs.prepare.outputs.images) }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Render Dockerfile
+        env:
+          IMAGE_CONFIG: ${{ matrix.image.config }}
+        run: |
+          mkdir -p tmp/context
+          ./scripts/render-dockerfile.sh "images/${IMAGE_CONFIG}" > tmp/context/Dockerfile
+
+      - name: Compose tags
+        id: compose
+        env:
+          IMAGE_NAME: ${{ needs.prepare.outputs.image_name }}
+          IMAGE_TAGS: ${{ join(matrix.image.tags, ' ') }}
+        run: |
+          {
+            echo "tags<<TAGS"
+            for tag in ${IMAGE_TAGS}; do
+              echo "${IMAGE_NAME}:${tag}"
+            done
+            echo "TAGS"
+          } >> "${GITHUB_OUTPUT}"
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: tmp/context
+          push: true
+          tags: ${{ steps.compose.outputs.tags }}
+
+  description:
+    name: Update Docker Hub description
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Install docker-pushrm
+        run: |
+          . ./defaults
+          mkdir -p "${DOCKER_PLUGIN_PATH}"
+          curl -fsSL "${DOCKER_PUSHRM_RELEASE}" -o "${DOCKER_PUSHRM_CMD}"
+          chmod +x "${DOCKER_PUSHRM_CMD}"
+
+      - name: Push README to Docker Hub
+        run: |
+          . ./defaults
+          docker pushrm "${BUILD_IMAGE_NAME}"

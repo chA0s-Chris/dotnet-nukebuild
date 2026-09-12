@@ -1,3 +1,4 @@
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/chA0s-Chris/dotnet-nukebuild/ci.yml?branch=main&label=Build&style=for-the-badge)
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/latest?label=Current&style=for-the-badge)
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/11-rc?color=%23dd0000&label=RC&style=for-the-badge)
 ![Docker Image Version](https://img.shields.io/docker/v/chaos/dotnet-nukebuild/9?label=SDK%209%20(STS)&style=for-the-badge)
