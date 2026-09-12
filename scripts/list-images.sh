@@ -27,6 +27,11 @@ for config in "${IMAGES_PATH}"/*; do
     printf '%s\n' "${IMAGE_TAGS[@]}"
   )
 
+  if [ -z "${tags}" ]; then
+    echo "${0##*/}: ${config}: IMAGE_TAGS is not set" >&2
+    exit 1
+  fi
+
   printf '%s{"config":"%s","tags":[' "${separator}" "${config##*/}"
 
   tag_separator=""

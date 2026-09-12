@@ -41,7 +41,8 @@ check_images() {
     expected="${EXPECTED_PATH}/${name}.Dockerfile"
 
     if [ "${REGENERATE}" = true ]; then
-      "${RENDER_CMD}" "${config}" > "${expected}"
+      "${RENDER_CMD}" "${config}" > "${WORK_PATH}/regenerated"
+      mv "${WORK_PATH}/regenerated" "${expected}"
       echo "regenerated ${expected}"
       continue
     fi
