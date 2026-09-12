@@ -22,6 +22,8 @@ separator=""
 for config in "${IMAGES_PATH}"/*; do
   # read the tags in a subshell so no configuration leaks into the next one
   tags=$(
+    # the environment must not satisfy what only an image configuration may set
+    unset -v IMAGE_TAGS
     . ./defaults
     . "${config}"
     printf '%s\n' "${IMAGE_TAGS[@]}"

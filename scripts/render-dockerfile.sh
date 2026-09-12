@@ -40,6 +40,9 @@ if [ ! -f "${IMAGE_CONFIG}" ]; then
   fail "image configuration not found: ${IMAGE_CONFIG}"
 fi
 
+# the environment must not satisfy what only an image configuration may set
+unset -v BASE_IMAGE_FILE IMAGE_TAGS
+
 # include defaults, then the image configuration
 . ./defaults
 . "${IMAGE_CONFIG}"
