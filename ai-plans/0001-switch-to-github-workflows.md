@@ -22,15 +22,15 @@ registry access.
 
 ### Layer 1: Dockerfile rendering
 
-- [ ] Rendering an image's Dockerfile requires no Docker daemon, registry credentials, or network access.
-- [ ] Expected Dockerfiles captured from `create_image`'s output at trunk `main` (`334b60b`) are committed for all four image configurations.
-- [ ] `build.sh` renders through the new path and no longer contains its own feature-concatenation logic.
-- [ ] `build.sh` retains its existing login, build, tag, push, and Docker Hub description sequence unchanged, confirmed by inspecting its diff against trunk `main` (`334b60b`) rather than by running it.
-- [ ] Rendering exits non-zero with a diagnostic when an image enables both Nuke features, or omits `BASE_IMAGE_FILE` or `IMAGE_TAGS`.
-- [ ] The image set, including each configuration's tags, is emitted as JSON in a deterministic order.
-- [ ] No configuration variable set by one image configuration affects the rendering of another.
-- [ ] `bash -n` succeeds for every shell script and sourced configuration file.
-- [ ] A committed check renders every image configuration, diffs the result against the expected Dockerfiles, asserts each rejection case, and succeeds without Docker, registry credentials, or network access.
+- [x] Rendering an image's Dockerfile requires no Docker daemon, registry credentials, or network access.
+- [x] Expected Dockerfiles captured from `create_image`'s output at trunk `main` (`334b60b`) are committed for all four image configurations.
+- [x] `build.sh` renders through the new path and no longer contains its own feature-concatenation logic.
+- [x] `build.sh` retains its existing login, build, tag, push, and Docker Hub description sequence unchanged, confirmed by inspecting its diff against trunk `main` (`334b60b`) rather than by running it.
+- [x] Rendering exits non-zero with a diagnostic when an image enables both Nuke features, or omits `BASE_IMAGE_FILE` or `IMAGE_TAGS`.
+- [x] The image set, including each configuration's tags, is emitted as JSON in a deterministic order.
+- [x] No configuration variable set by one image configuration affects the rendering of another.
+- [x] `bash -n` succeeds for every shell script and sourced configuration file.
+- [x] A committed check renders every image configuration, diffs the result against the expected Dockerfiles, asserts each rejection case, and succeeds without Docker, registry credentials, or network access.
 
 ### Layer 2: GitHub Actions
 
