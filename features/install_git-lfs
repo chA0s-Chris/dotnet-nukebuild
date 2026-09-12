@@ -1,6 +1,12 @@
 # install git-lfs
-RUN curl -SL --output git-lfs.deb "https://packagecloud.io/github/git-lfs/packages/ubuntu/noble/git-lfs_3.8.0_amd64.deb/download.deb?distro_version_id=284" \
-    && git_lfs_sha512='5db6dccbfa6bf1c0e7ebefc0016ab92667186ce38677da2692cc80f9b5e7a76eec58796761d005316c5d720aed1b46970c8cf096d514954b7a904b3b190acfd9' \
+ENV GIT_LFS_VERSION="3.8.0"
+RUN . /etc/os-release \
+    && case "${VERSION_CODENAME}" in \
+         noble) git_lfs_sha512='5db6dccbfa6bf1c0e7ebefc0016ab92667186ce38677da2692cc80f9b5e7a76eec58796761d005316c5d720aed1b46970c8cf096d514954b7a904b3b190acfd9' ;; \
+         resolute) git_lfs_sha512='6609594d7a3e9bb203f12d25edd3f75d7932d71afe43c60ac14b3825b3a8734732a2655a20d11e3245951ec434ac0ce6da6b4a1283a1452177ac65c178046ae0' ;; \
+         *) echo "no git-lfs checksum pinned for distro '${VERSION_CODENAME}'" >&2; exit 1 ;; \
+       esac \
+    && curl -SL --output git-lfs.deb "https://packagecloud.io/github/git-lfs/packages/ubuntu/${VERSION_CODENAME}/git-lfs_${GIT_LFS_VERSION}_amd64.deb/download.deb" \
     && echo "$git_lfs_sha512 git-lfs.deb" | sha512sum -c - \
     && dpkg -i git-lfs.deb
 
