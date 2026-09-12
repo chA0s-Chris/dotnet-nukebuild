@@ -5,6 +5,7 @@ BUILD_IMAGE_NAME="chaos/dotnet-nukebuild"
 DOCKER_PLUGIN_PATH="${HOME}/.docker/cli-plugins"
 DOCKER_PUSHRM_CMD="${DOCKER_PLUGIN_PATH}/docker-pushrm"
 DOCKER_PUSHRM_RELEASE="https://github.com/christian-korneck/docker-pushrm/releases/download/v1.9.0/docker-pushrm_linux_amd64"
+DOCKER_PUSHRM_SHA512="015ed65da5dbe384b33235b6933bc1e4ea5b38e7d0f8a5ef3c95dc2544279c71d8a9e406b7dda06dd0f30fe89a19c047e99a24f28c8fa5ea5708d28fc03cf196"
 
 ###
 ### features
