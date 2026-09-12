@@ -1,7 +1,8 @@
 #!/bin/bash
 #
 # Verify that every image configuration renders exactly as recorded in
-# expected/ and that invalid configurations are rejected.
+# expected/, that no expected Dockerfile is left without a configuration,
+# and that invalid configurations are rejected.
 #
 # Needs no Docker daemon, registry credentials, or network access. Run from the
 # repository root, like build.sh.
@@ -66,6 +67,22 @@ check_images() {
   done
 }
 
+# a fixture without an image configuration is stale and never checked
+check_stale_fixtures() {
+  for expected in "${EXPECTED_PATH}"/*.Dockerfile; do
+    if [ ! -e "${expected}" ]; then
+      continue
+    fi
+
+    name="${expected##*/}"
+    name="${name%.Dockerfile}"
+
+    if [ ! -f "${IMAGES_PATH}/${name}" ]; then
+      report_failure "${name}: ${expected} has no image configuration at ${IMAGES_PATH}/${name}"
+    fi
+  done
+}
+
 # an invalid configuration must fail with a diagnostic instead of rendering
 expect_rejected() {
   description="${1}"
@@ -118,6 +135,7 @@ if [ "${REGENERATE}" = true ]; then
   exit 0
 fi
 
+check_stale_fixtures
 check_rejections
 
 if [ "${FAILURES}" -ne 0 ]; then
