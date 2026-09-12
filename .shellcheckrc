@@ -1,0 +1,4 @@
+# Every script sources ./defaults and an image configuration chosen at runtime.
+# That indirection is the design, not an oversight, so silence the two checks
+# that only report ShellCheck's inability to follow it.
+disable=SC1090,SC1091

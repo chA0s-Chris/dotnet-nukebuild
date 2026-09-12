@@ -1,5 +1,6 @@
 #!/bin/bash
 #
+IMAGES_PATH="./images"
 IMAGE_TEMP_PATH="./tmp"
 IMAGE_DOCKERFILE="${IMAGE_TEMP_PATH}/Dockerfile"
 RENDER_CMD="./scripts/render-dockerfile.sh"
@@ -21,10 +22,11 @@ create_image() {
 }
 
 create_tag_parameters() {
-  TAG_PARAMETERS=""
+  # an array so a tag is passed as one argument instead of being word split
+  TAG_PARAMETERS=()
 
   for tag in "${IMAGE_TAGS[@]}"; do
-    TAG_PARAMETERS="${TAG_PARAMETERS} -t ${BUILD_IMAGE_NAME}:${tag}"
+    TAG_PARAMETERS+=(-t "${BUILD_IMAGE_NAME}:${tag}")
   done
 }
 
@@ -33,7 +35,7 @@ build_image() {
   
   echo "Building image..."
   
-  docker build ${TAG_PARAMETERS} -f ${IMAGE_DOCKERFILE} .
+  docker build "${TAG_PARAMETERS[@]}" -f "${IMAGE_DOCKERFILE}" .
 }
 
 # include defaults
@@ -42,14 +44,14 @@ build_image() {
 remove_temp_path
 create_temp_path
 
-for image in $(find ./images -type f); do
+for image in "${IMAGES_PATH}"/*; do
   echo "Image found: ${image}"
 
   # reset to defaults
   . ./defaults
 
   # include image configuration
-  . ${image}
+  . "${image}"
 
   create_image "${image}"
   build_image
