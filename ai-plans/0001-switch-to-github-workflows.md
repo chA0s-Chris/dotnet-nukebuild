@@ -34,18 +34,19 @@ registry access.
 
 ### Layer 2: GitHub Actions
 
-- [ ] A CI workflow builds every image in the emitted set as parallel matrix jobs, on pull requests and on pushes to `main`.
-- [ ] The CI workflow runs the rendering check before building images.
-- [ ] CI runs never authenticate to Docker Hub and never push an image or a description.
-- [ ] A failing image job does not cancel the remaining image jobs.
+- [x] A CI workflow builds every image in the emitted set as parallel matrix jobs, on pull requests and on pushes to `main`.
+- [x] The CI workflow runs the rendering check before building images.
+- [x] CI runs never authenticate to Docker Hub and never push an image or a description.
+- [x] A failing image job does not cancel the remaining image jobs.
 - [ ] A release workflow runs only on manual dispatch and publishes every tag of each selected image.
-- [ ] The release defaults to all images and accepts an input narrowing the run to a subset.
-- [ ] The release workflow refuses to publish from any ref other than `main`.
-- [ ] The release workflow updates the Docker Hub description from `README.md` only after every image job in that run has succeeded.
+- [x] The release defaults to all images and accepts an input narrowing the run to a subset.
+- [x] The release workflow refuses to publish from any ref other than `main`.
+- [x] The release workflow updates the Docker Hub description from `README.md` only after every image job in that run has succeeded.
 - [ ] The Docker Hub username is read from a repository variable and the token from a repository secret, and the token does not appear in workflow logs.
-- [ ] Concurrent release runs are prevented.
-- [ ] `appveyor.yml` is removed and no AppVeyor configuration remains.
-- [ ] `README.md` shows a CI workflow status badge.
+- [x] Concurrent release runs are prevented.
+- [x] `appveyor.yml` is removed and no AppVeyor configuration remains.
+- [x] `build.sh` builds every image locally and no longer logs in, pushes, or updates the Docker Hub description.
+- [x] `README.md` shows a CI workflow status badge.
 
 ## Technical Details
 
@@ -85,6 +86,10 @@ No feature uses `COPY` or `ADD`, so the build context can be empty rather than t
 `get_docker_pushrm` in `build.sh` installs a Docker CLI plugin onto the CI host — unrelated to the
 `install_docker_pushrm` feature that installs the same tool *into* the images. Layer 2 removes the
 host bootstrap from the build path and handles the description push as a release job step.
+
+Publishing moves entirely into the release workflow, so `build.sh` keeps only local building. A
+script that can log in and push would bypass the workflow's ref guard, concurrency lock, and
+rendering check.
 
 Publishing reads the Docker Hub username from the `DOCKERHUB_USERNAME` repository variable and the
 access token from the `DOCKERHUB_TOKEN` repository secret, so the workflow must reference
