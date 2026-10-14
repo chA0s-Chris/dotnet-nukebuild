@@ -12,20 +12,20 @@ Fallout and dropping NUKE is deferred.
 
 ## Acceptance Criteria
 
-- [ ] The built `sdk-10.0` and `sdk-11.0` images list `Fallout.GlobalTool` 10.4.0 next to
+- [x] The built `sdk-10.0` and `sdk-11.0` images list `Fallout.GlobalTool` 10.4.0 next to
       `Nuke.GlobalTool` 10.1.0 in `dotnet tool list --global`, with both `fallout` and `nuke` on
       `PATH`.
-- [ ] Building an image that enables Fallout fails when the installed `fallout` command cannot
+- [x] Building an image that enables Fallout fails when the installed `fallout` command cannot
       start, so CI's image builds catch a broken install without manual inspection.
-- [ ] The `sdk-8.0` and `sdk-9.0` images are unchanged and their expected Dockerfiles are
+- [x] The `sdk-8.0` and `sdk-9.0` images are unchanged and their expected Dockerfiles are
       byte-for-byte identical.
-- [ ] Fallout is a separate feature, disabled by default and enabled only in the `sdk-10.0` and
+- [x] Fallout is a separate feature, disabled by default and enabled only in the `sdk-10.0` and
       `sdk-11.0` image configurations.
-- [ ] The expected Dockerfiles for `sdk-10.0` and `sdk-11.0` are regenerated and
+- [x] The expected Dockerfiles for `sdk-10.0` and `sdk-11.0` are regenerated and
       `scripts/check-render.sh` passes.
-- [ ] The `sdk-10.0` image revision tag is incremented from `10.12` to `10.13`.
-- [ ] `scripts/check-shell.sh` passes.
-- [ ] `README.md` lists Fallout and its version under "Additional software", states that it ships
+- [x] The `sdk-10.0` image revision tag is incremented from `10.12` to `10.13`.
+- [x] `scripts/check-shell.sh` passes.
+- [x] `README.md` lists Fallout and its version under "Additional software", states that it ships
       only in the SDK 10 and 11 images, explains that a repository uses `nuke` or `fallout`
       depending on its build project, and links Fallout's migration guide from NUKE.
 

@@ -4,3 +4,4 @@ IMAGE_TAGS=("11-rc" "11-rc.2")
 # install all features
 FEATURE_INSTALL_NUKE=true
 FEATURE_INSTALL_NUKE9=false
+FEATURE_INSTALL_FALLOUT=true
