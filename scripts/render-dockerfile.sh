@@ -22,6 +22,7 @@ FEATURE_ORDER=(
   "install_kubectl:FEATURE_INSTALL_KUBECTL"
   "install_nuke:FEATURE_INSTALL_NUKE"
   "install_nuke9:FEATURE_INSTALL_NUKE9"
+  "install_fallout:FEATURE_INSTALL_FALLOUT"
   "install_node:FEATURE_INSTALL_NODE"
 )
 

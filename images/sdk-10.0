@@ -1,6 +1,7 @@
 BASE_IMAGE_FILE="./basefiles/sdk-10.0-base"
-IMAGE_TAGS=("10" "latest" "10.12")
+IMAGE_TAGS=("10" "latest" "10.13")
 
 # install all features
 FEATURE_INSTALL_NUKE=true
 FEATURE_INSTALL_NUKE9=false
+FEATURE_INSTALL_FALLOUT=true

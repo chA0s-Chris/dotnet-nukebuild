@@ -28,12 +28,23 @@ The image is tagged for the current .NET releases and is based on the correspond
 * Docker CLI 29.9.0
 * kubectl 1.37.1
 * [nuke](https://nuke.build) 9.0.4 (10.1.0) as global tool 
+* [Fallout](https://fallout.build) 10.4.0 as global tool (SDK 10 and 11 images only)
 * Azure Artifacts Credential Provider
 * docker pushrm 1.9.0 ([Docker Push Readme](https://github.com/christian-korneck/docker-pushrm))
 * git 2.43.0
 * git-lfs 3.8.0
 * .NET Aspire SDK
 * Node.js 24.21.0
+
+## NUKE and Fallout
+
+NUKE is no longer maintained. [Fallout](https://fallout.build), its hard-fork successor, is
+installed next to it, so each repository can switch on its own schedule: run `nuke` for a build
+project that references NUKE and `fallout` for one that references Fallout. To move a build over,
+follow Fallout's
+[migration guide from NUKE](https://github.com/Fallout-build/Fallout/blob/develop/docs/Migration/from-nuke.md).
+
+Fallout requires .NET 10 or later, so the SDK 8 and 9 images ship NUKE only.
 
 ## Get The Image
 

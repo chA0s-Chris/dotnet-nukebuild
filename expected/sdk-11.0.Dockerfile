@@ -54,6 +54,13 @@ RUN curl -L https://dl.k8s.io/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl -o kub
 ENV NUKE_TOOL_VERSION="10.1.0"
 RUN dotnet tool install --global Nuke.GlobalTool --version ${NUKE_TOOL_VERSION}
 
+# install fallout
+# a bare `fallout` prompts to set up a build and fails outside a build repository;
+# `fallout :complete` starts the tool without one, so the build fails if it cannot run
+ENV FALLOUT_TOOL_VERSION="10.4.0"
+RUN dotnet tool install --global Fallout.GlobalTool --version ${FALLOUT_TOOL_VERSION} \
+    && fallout :complete
+
 # install nodejs
 RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - \
     && apt-get install -y nodejs \
