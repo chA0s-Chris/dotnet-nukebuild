@@ -18,23 +18,23 @@ The image is tagged for the current .NET releases and is based on the correspond
 
 | Tags            | Status   | SDK                     | Runtime               | Base            |
 |-----------------|----------|-------------------------|-----------------------|-----------------|
-| 10, latest      | LTS      | 10.0.402                | 10.0.13               | Ubuntu Noble    |
-| 11-rc.2, 11-rc  | RC       | 11.0.100-rc.2.26504.105 | 11.0.0-rc.2.26504.105 | Ubuntu Resolute |
-| 9               | STS      | 9.0.319                 | 9.0.21                | Ubuntu Noble    |
-| 8               | LTS      | 8.0.426                 | 8.0.32                | Ubuntu Noble    |
+| 10, latest      | LTS      | 10.0.403                | 10.0.14               | Ubuntu Noble    |
+| 11-rc.3, 11-rc  | RC       | 11.0.100-rc.3.26522.148 | 11.0.0-rc.3.26522.148 | Ubuntu Resolute |
+| 9               | STS      | 9.0.320                 | 9.0.22                | Ubuntu Noble    |
+| 8               | LTS      | 8.0.427                 | 8.0.33                | Ubuntu Noble    |
 
 ## Additional software
 
-* Docker CLI 29.9.0
+* Docker CLI 29.9.2
 * kubectl 1.37.1
 * [nuke](https://nuke.build) 9.0.4 (10.1.0) as global tool 
 * [Fallout](https://fallout.build) 10.4.0 as global tool (SDK 10 and 11 images only)
 * Azure Artifacts Credential Provider
 * docker pushrm 1.9.0 ([Docker Push Readme](https://github.com/christian-korneck/docker-pushrm))
 * git 2.43.0
-* git-lfs 3.8.0
+* git-lfs 3.8.1
 * .NET Aspire SDK
-* Node.js 24.21.0
+* Node.js 24.22.1
 
 ## NUKE and Fallout
 

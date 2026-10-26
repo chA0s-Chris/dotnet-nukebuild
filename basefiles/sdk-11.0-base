@@ -1,2 +1,2 @@
-FROM mcr.microsoft.com/dotnet/sdk:11.0.100-rc.2-resolute
+FROM mcr.microsoft.com/dotnet/sdk:11.0.100-rc.3-resolute
 
