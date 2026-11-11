@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:9.0.320-noble
+FROM mcr.microsoft.com/dotnet/sdk:9.0.321-noble
 
 ENV POWERSHELL_TELEMETRY_OPTOUT=true \
     DOTNET_CLI_TELEMETRY_OPTOUT=true \
@@ -44,9 +44,9 @@ RUN mkdir -p ~/.docker/cli-plugins \
     && chmod +x ~/.docker/cli-plugins/docker-pushrm
 
 # install kubectl
-ENV KUBECTL_VERSION="1.37.1"
+ENV KUBECTL_VERSION="1.37.2"
 RUN curl -L https://dl.k8s.io/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl -o kubectl \
-    && kubectl_sha512='ff56b9d53b024d0bf4ab6a5c802936d6fd14ef33036962bd9c7202ffb21c04836781b5a2ff0394c35ba7a7aa48f21b51cfe733247672de4d89bc29602e1cc94a' \
+    && kubectl_sha512='a8aea87a6e6b4e1d77e124c56daef87ac807c16885ba1faf460484544fccdba2021ff68de6af61c586834a6a0836a9e6e9868b5ff97b238f7fdc3bfe860aeaa9' \
     && echo "$kubectl_sha512 kubectl" | sha512sum -c - \
     && chmod +x kubectl \
     && mv kubectl /usr/bin/kubectl \
